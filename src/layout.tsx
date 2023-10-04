@@ -1,7 +1,8 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Nav from "./components/Nav";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { VerticalBubbles } from "./components/Bubble";
+import { useScroll } from "framer-motion";
 
 const Wrapper = ({ children }: { children: JSX.Element }) => {
     const location = useLocation();
@@ -11,11 +12,47 @@ const Wrapper = ({ children }: { children: JSX.Element }) => {
     return children;
 };
 
+
+
 function Layout() {
+    const [isMobile, setMobile] = useState(false);
+
+    useEffect(() => {
+        const resizeEvt = () => {
+            setMobile(window.innerWidth <= 700)
+        }
+
+        resizeEvt();
+
+        window.addEventListener('resize', resizeEvt)
+
+        return () => window.removeEventListener('resize', resizeEvt)
+
+    }, [])
+
+
 
     return (
         <Wrapper>
             <>
+                {!isMobile && (
+                    <div style={{ position: 'fixed', inset: '1rem', bottom: 'unset', zIndex: 1000}}>
+
+                    <div className='my-1 card' style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginInline: 'auto', width: 'fit-content'}}>
+                        <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            width='20'
+                            height='20'
+                            fill='var(--color-secondary)'
+                            viewBox='0 0 16 16'
+                            >
+                            <path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z' />
+                        </svg>{" "}
+                        This site is currently optimized for mobile
+                    </div>
+                            </div>
+                )}
+
                 <Nav />
                 <Outlet />
 
@@ -31,7 +68,9 @@ function Layout() {
                         gap: "0.75rem",
                     }}
                 >
-                    <VerticalBubbles count={Math.floor((window.innerWidth - 200) / 2)} />
+
+                    {/* <VerticalBubbles count={Math.floor((window.innerWidth - 200) / 2)} /> */}
+
                     <div>Lom13@pm.me</div>
                     <Link to='https://github.com/lombardoc4' className='roboto d-block'>
                         Github
