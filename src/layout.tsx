@@ -1,8 +1,8 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Nav from "./components/Nav";
 import { useEffect, useLayoutEffect, useState } from "react";
-import { VerticalBubbles } from "./components/Bubble";
-import { useScroll } from "framer-motion";
+// import { VerticalBubbles } from "./components/Bubble";
+// import { useScroll } from "framer-motion";
 
 const Wrapper = ({ children }: { children: JSX.Element }) => {
     const location = useLocation();
