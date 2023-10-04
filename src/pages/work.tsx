@@ -6,8 +6,9 @@ import NPExplorer from "../assets/np-explorer.png";
 import Pacer from "../assets/pacer.png";
 import PropPulse from "../assets/propeller-pulse.png";
 import Techtonic from "../assets/techtonic.png";
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 import { SpringBubbles } from "../components/Bubble";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const workLibrary = [
     {
@@ -83,16 +84,39 @@ interface IWorkSection {
 }
 
 const WorkSection = ({ img, title, role, link, description, details }: IWorkSection) => {
+    const sectionRef = useRef(null)
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ['start end', 'center 0.75']
+      })
+    const imgYTranslate = useTransform(scrollYProgress, [0, 1], [100, 0])
+    const imgOpacity = useTransform(scrollYProgress, [0, 1], [0, 1])
+
+    console.log('imgY', imgYTranslate)
+
     return (
         <>
-            <div className='segment'>
+            <div className='segment'
+            >
                 {details && (
-                    <Link target='_blank' to={link}>
-                        <img
+                    <Link target='_blank' to={link}
+                    ref={sectionRef}
+                    style={{
+                        border: "1px solid var(--color-secondary)",
+                        padding: '2rem 1.5rem',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '1rem',
+                        borderRadius: 'var(--radius-sm)',
+                        background: 'linear-gradient(to bottom, var(--color-primary) 66%, var(--color-primary-accent))',
+                        overflow: 'hidden',
+                    }}>
+                        <motion.img
                             style={{
-                                width: "100%",
-                                border: "1px solid var(--color-secondary)",
-                                aspectRatio: "3/2",
+                                borderRadius: 'var(--radius-sm)',
+                                boxShadow: '0 0 2rem -0.5rem var(--color-secondary)',
+                                translateY: imgYTranslate,
+                                opacity: scrollYProgress
                             }}
                             src={img}
                         />

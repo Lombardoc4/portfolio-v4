@@ -35,14 +35,15 @@ function Nav() {
                     left: '1rem',
                     right: '1rem',
                     zIndex: 100,
-                    backgroundColor: "var(--color-secondary)",
+                    backgroundColor: "var(--color-primary)",
                     color: "var(--color-black)",
                     borderRadius: "var(--radius-sm)",
                     display: "flex",
                     justifyContent: "space-between",
-                    padding: "0.5rem",
+                    padding: "0.75rem 0.5rem",
                     gap: "0.5rem",
                     alignItems: "center",
+                    boxShadow: '0 0 1rem -0.5rem var(--color-primary)'
                 }}
             >
                 <NavLink to='/' className='nav-link' preventScrollReset={false}>
