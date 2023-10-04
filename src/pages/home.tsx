@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Bubble, HorizontalBubbles, SpringBubbles, VerticalBubbles } from "../components/Bubble";
+import { Bubble, HorizontalBubbles } from "../components/Bubble";
 import { AnalogTitle, DigitalTitle, VideoTitle } from "../main";
 import WorkPage from "./work";
 import { motion, useScroll, useTransform } from "framer-motion"

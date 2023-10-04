@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { SpringBubbles } from "./Bubble";
 
 export const ContactForm = ({ closeAction }: { closeAction: () => void }) => {
