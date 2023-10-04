@@ -1,7 +1,7 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { AnalogTitle, ArtTitle, DigitalTitle, VideoTitle } from "../main";
 import { IArtPiece, artLibrary } from "../artLibrary";
-import { HorizontalBubbles, SpringBubbles } from "../components/Bubble";
+import { SpringBubbles } from "../components/Bubble";
 import { Fragment } from "react";
 
 export const ArtLayout = () => {
