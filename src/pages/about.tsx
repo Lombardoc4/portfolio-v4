@@ -38,11 +38,7 @@ function AboutPage() {
                     <span className="d-block bungee" style={{display: 'flex', justifyContent: 'space-between'}}><span>coast</span><span>to</span><span>coast</span></span>
                     indulging in endless miles of trails.
                 </p>
-                <button className="mt-1">
-                    <Link to={"/nature"}>
-                        Nature &rarr;
-                    </Link>
-                    </button>
+                <Link to='/nature' className="underline d-block" style={{textAlign: 'right', fontSize: '2rem', transform: 'skewX(-15deg)'}}>NATURE &rarr;</Link>
             {/* </div> */}
         </div>
 

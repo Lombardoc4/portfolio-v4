@@ -183,6 +183,9 @@ input:-webkit-autofill:active{
 .d-block {
   display: block;
 }
+.d-inline-block {
+  display: inline-block;
+}
 
 .w-100 {
   width: 100%;
