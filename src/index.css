@@ -11,7 +11,8 @@
   --color-primary-accent: hsl(47, 100%, 45%);
   --color-secondary-accent: #a52727;
   --color-white: rgba(255, 255, 255);
-  --color-black: rgba(0, 0, 0, 0.87);
+  --color-black: rgba(0, 0, 0, 0.8);
+  --color-black-light: rgba(0, 0, 0, 0.6);
 
   /* Border Radius */
   --radius-sm: 0.25rem;
@@ -26,7 +27,7 @@
 
   color-scheme: light dark;
   color: var(--color-white);
-  background-color: var(--color-black);
+  background-color: transparent;
 
   line-height: 1.5;
   /* letter-spacing: -0.05rem; */
@@ -42,6 +43,16 @@
 
 
 /* TESTING */
+
+.page-bg {
+  background-color: var(--color-black);
+  background-image: url(https://grainy-gradients.vercel.app/noise.svg);
+  filter: contrast(300%) brightness(50%);
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  /* filter: contrast(170%) brightness(1000%); */
+}
 
 
 
@@ -270,13 +281,16 @@ input:-webkit-autofill:active{
   /* flex-direction: column; */
   border-radius: var(--radius-sm);
   background-color: var(--color-secondary-accent);
+  box-shadow: 0 0 0.5rem -0.25rem var(--color-black);
   flex: 1;
   line-height: 1;
 }
 
 .nav-link.active {
-  color: var(--color-black);
-  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  background-color: var(--color-primary-accent);
+  box-shadow: inset 0 0 0.25rem -0.125rem var(--color-black);
+
 }
 
 .art-nav {

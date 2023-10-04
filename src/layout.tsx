@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Nav from "./components/Nav";
 import { useEffect, useLayoutEffect, useState } from "react";
+import { HorizontalBubbles } from "./components/Bubble";
 // import { VerticalBubbles } from "./components/Bubble";
 // import { useScroll } from "framer-motion";
 
@@ -35,6 +36,8 @@ function Layout() {
     return (
         <Wrapper>
             <>
+                <div className="page-bg"/>
+
                 {!isMobile && (
                     <div style={{ position: 'fixed', inset: '1rem', bottom: 'unset', zIndex: 1000}}>
 
@@ -55,14 +58,15 @@ function Layout() {
 
                 <Nav />
                 <Outlet />
-
                 <footer
+                style={{
+                    paddingBlock: "1rem 5rem",
+                    color: "var(--color-white)",
+                }}>
+                <HorizontalBubbles count={1} />
+                <div
                     className='container'
                     style={{
-                        // borderTop: '1px solid var(--color-white)',
-                        paddingBlock: "1rem 5rem",
-                        // marginTop: "1rem",
-                        color: "var(--color-white)",
                         display: "flex",
                         flexDirection: "column",
                         gap: "0.75rem",
@@ -70,7 +74,6 @@ function Layout() {
                 >
 
                     {/* <VerticalBubbles count={Math.floor((window.innerWidth - 200) / 2)} /> */}
-
                     <div>Lom13@pm.me</div>
                     <Link to='https://github.com/lombardoc4' className='roboto d-block'>
                         Github
@@ -85,6 +88,7 @@ function Layout() {
                             <br />
                             Based in Fort Lee, NJ
                         </h3>
+                    </div>
                     </div>
                 </footer>
             </>
