@@ -59,18 +59,27 @@ function HomePage() {
             <HorizontalBubbles count={1} />
 
             <div className='container my-1'>
-                <div className='my-1'>
-                    <p style={{ fontSize: "1.5rem", textAlign: "justify" }}>
-                        With <span className='underline'>4+ years</span> of professional developer experience, I have
-                        had the opportunity to work with top healthcare professionals such as{" "}
-                        <span className='underline'>Novartis</span> and{" "}
-                        <span className='underline'>Johnson & Johnson</span>, along with a handful of upcoming
-                        musicians.
-                    </p>
-                    <button className='my-1'>
-                        <Link to='/'>About</Link>
-                    </button>
-                </div>
+                <p style={{ fontSize: "1.25rem" }}>
+                    With 4+ years of professional developer experience, opportunity is around every corner.
+                </p>
+                <p style={{ fontSize: "1.25rem" }}>
+                    Curiousity proves to be one of the greatest tools for leading projects, experimenting with code, and expanding
+                    my skills.
+                </p>
+                <p style={{ fontSize: "1.25rem" }}>
+                    I love to ask questions and learn together with a team. Usability, creativity, and
+                    discipline put me leaps and bounds along my path.
+                </p>
+                <p style={{ fontSize: "1.25rem" }}>
+                     This is my path as a developer.
+                </p>
+                <Link
+                    to='/about'
+                    className='underline d-block my-1'
+                    style={{ textAlign: "right", fontSize: "2rem", transform: "skewX(-15deg)" }}
+                >
+                    ABOUT &rarr;
+                </Link>
             </div>
 
             {/* <Link className="h1 bungee container" to='/'>Work</Link> */}
@@ -80,22 +89,27 @@ function HomePage() {
             <HorizontalBubbles count={1} />
 
             <div className='container my-1'>
-                <h3>Recreations</h3>
-                <p>Hiking is cool, I've gone on road trips to the west us, Adventuring with friends and solo</p>
+                <h2>Recreations</h2>
+                <p>There is endless pleasure to be found in hiking; native plants, breath-taking views, and making new friends. My friends and I have been traveling around the US since 2018 and love sharing our experiences.</p>
                 <Link to='/'>Rec</Link>
+                <Link
+                    to='/nature'
+                    className='underline d-block my-1'
+                    style={{ textAlign: "right", fontSize: "2rem", transform: "skewX(-15deg)" }}
+                >
+                    NATURE &rarr;
+                </Link>
             </div>
 
             <HorizontalBubbles count={1} />
 
             <div className='container my-1'>
                 <div className='my-1'>
-                    <h3>Art</h3>
-                    <p>Hiking is cool, I've gone on road trips to the west us, Adventuring with friends and solo</p>
-
+                    <h2>Art</h2>
+                    <p>Art is my sweet release. Unlike code there is no structure, logic, algorithms to follow. </p>
                 </div>
             </div>
-            <ArtNav/>
-
+            <ArtNav />
 
             <div style={{ maxWidth: "1200px", overflow: "hidden", position: "relative" }}>
                 <Bubble

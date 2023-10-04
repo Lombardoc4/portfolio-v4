@@ -87,18 +87,19 @@ const WorkSection = ({ img, title, role, link, description, details }: IWorkSect
     const sectionRef = useRef(null)
     const { scrollYProgress } = useScroll({
         target: sectionRef,
-        offset: ['start end', 'center 0.75']
+        offset: ['start end', 'center 0.66']
       })
     const imgYTranslate = useTransform(scrollYProgress, [0, 1], [100, 0])
-    const imgOpacity = useTransform(scrollYProgress, [0, 1], [0, 1])
-
-    console.log('imgY', imgYTranslate)
 
     return (
         <>
             <div className='segment'
             >
                 {details && (
+                <motion.div style={{
+                    opacity: scrollYProgress,
+                }}>
+
                     <Link target='_blank' to={link}
                     ref={sectionRef}
                     style={{
@@ -116,11 +117,11 @@ const WorkSection = ({ img, title, role, link, description, details }: IWorkSect
                                 borderRadius: 'var(--radius-sm)',
                                 boxShadow: '0 0 2rem -0.5rem var(--color-secondary)',
                                 translateY: imgYTranslate,
-                                opacity: scrollYProgress
                             }}
                             src={img}
-                        />
+                            />
                     </Link>
+                            </motion.div>
                 )}
                 <Link target='_blank' to={link} style={{ display: "flex", justifyContent: "space-between" }}>
                     <div>
