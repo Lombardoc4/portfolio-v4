@@ -26,6 +26,9 @@ jobs:
       - name: Installing dependencies
         run: npm install
       - name: Building project
+        env:
+          VITE_API_KEY: ${{ secrets.EMAIL_API_KEY }}
+          VITE_MAIL_ENDPOINT: ${{ secrets.EMAIL_ENDPOINT }}
         run: npm run build
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
