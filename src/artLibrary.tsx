@@ -218,7 +218,7 @@ export const artLibrary: IArtPiece[] = [
     {
         title: "Under Ice Caps",
         year: "2019",
-        description: "Made with ...",
+        description: "Acrylic on Canvas",
         img: <IMG src={IceCaps} />,
         type: "analog",
     },

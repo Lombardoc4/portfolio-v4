@@ -1,13 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { AnalogTitle, ArtTitle, DigitalTitle, VideoTitle } from "../main";
 import { IArtPiece, artLibrary } from "../artLibrary";
-import { SpringBubbles } from "../components/Bubble";
 import { Fragment } from "react";
 
 export const ArtLayout = () => {
     return (
         <>
-            <ArtNav/>
+            <ArtNav />
             <Outlet />
         </>
     );
@@ -16,68 +15,61 @@ export const ArtLayout = () => {
 export const ArtNav = () => {
     return (
         <div className='art-nav container'>
-                <ArtCard
-                    link='/art/analog'
-                    img='/analog-art.png'
-                    title={
-                        <>
-                            <AnalogTitle />
-                        </>
-                    }
-                />
-                <ArtCard
-                    link='/art/digital'
-                    img='/digi-art.png'
-                    title={
-                        <>
-                            <DigitalTitle />
-                        </>
-                    }
-                />
-                <ArtCard link='/art/video' img='/video.png' title={<VideoTitle />} />
-            </div>
-    )
-}
+            <ArtCard
+                link='/art/analog'
+                img='/analog-art.png'
+                title={
+                    <>
+                        <AnalogTitle />
+                    </>
+                }
+            />
+            <ArtCard
+                link='/art/digital'
+                img='/digi-art.png'
+                title={
+                    <>
+                        <DigitalTitle />
+                    </>
+                }
+            />
+            <ArtCard link='/art/video' img='/video.png' title={<VideoTitle />} />
+        </div>
+    );
+};
 
 function shuffle(array: IArtPiece[]) {
-    let currentIndex = array.length,  randomIndex;
+    let currentIndex = array.length,
+        randomIndex;
 
     // While there remain elements to shuffle.
     while (currentIndex > 0) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
 
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
 
     return array;
-  }
+}
 
 function ArtPage() {
-    const allArtShuffle = shuffle(artLibrary)
+    const allArtShuffle = shuffle(artLibrary);
 
     return (
         <div className='container'>
-            <h1 style={{marginTop: '3rem'}}>Art</h1>
+            <h1 style={{ marginTop: "3rem" }}>Art</h1>
             <p>A random shuffle of my art</p>
 
-            {allArtShuffle.map((artPiece: IArtPiece, i) => (
+            {allArtShuffle.map((artPiece: IArtPiece) => (
                 <Fragment key={artPiece.title}>
-                    <ArtPiece {...artPiece} showType={true} />
-                    {i !== allArtShuffle.length - 1 && (
-                        <div className='mt-1'>
-                            <SpringBubbles />
-                        </div>
-                    )}
+                    <ArtPiece {...artPiece}  />
                 </Fragment>
             ))}
         </div>
     );
-
 }
 
 export default ArtPage;
@@ -97,9 +89,8 @@ function ArtCard({ link, img, title }: IArtCard) {
     );
 }
 
-
 export const GalleryPage = ({ type }: { type: "digital" | "analog" | "video" }) => {
-    const art = artLibrary.filter(art => art.type === type);
+    const art = artLibrary.filter((art) => art.type === type);
 
     return (
         <div className='container' style={{ marginTop: "2rem" }}>
@@ -119,17 +110,14 @@ export const GalleryPage = ({ type }: { type: "digital" | "analog" | "video" }) 
             {type === "digital" && <p>Digital collages and photo edits</p>}
             {type === "video" && <p>8mm film, that real vintage field</p>}
 
-            {art.map((artPiece: IArtPiece, i) => (
-
+            {art.map((artPiece: IArtPiece) => (
                 <Fragment key={artPiece.title}>
                     <ArtPiece {...artPiece} />
-                    {i !== art.length - 1 && <div className="mt-1"><SpringBubbles /></div>}
                 </Fragment>
             ))}
         </div>
     );
 };
-
 
 interface IArtCard {
     link: string;
@@ -137,29 +125,26 @@ interface IArtCard {
     title?: JSX.Element;
 }
 
-interface IArtPieceComponent extends IArtPiece
-{
-    showType?: boolean
-}
-
-const ArtPiece = ({ title, year, description, img, video, type, showType=false }: IArtPieceComponent) => {
+const ArtPiece = ({ title, year, description, img, video,}: IArtPiece) => {
     return (
         <div
             className='segment'
             style={{
                 marginInline: "-1rem",
+                marginBottom: "4rem",
             }}
         >
             {img}
             {video}
 
-            <div className='container title'>
-                {showType && <small style={{textTransform: 'uppercase'}}>{type}</small>}
+            <div className='title' style={{ marginInline: "1rem" }}>
                 <h2>{title}</h2>
-                {year && <p className="pixel">{year}</p>}
-                <p className="mt-1">{description}</p>
-            </div>
 
+                <div className='mt-1'>
+                    {year && <p>{year}</p>}
+                    <p>{description}</p>
+                </div>
+            </div>
         </div>
     );
 };
