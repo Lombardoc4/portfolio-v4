@@ -1,49 +1,53 @@
 import { useMemo, useState } from "react";
 import { SpringBubbles } from "./Bubble";
+import { Button } from "./Button";
+import { FormError, StyledContactForm } from "./StyledContactForm";
+import { AlertIcon } from "../icons";
+
+
+interface ContactInfo {
+    name: string,
+    email: string
+}
 
 export const ContactForm = ({ closeAction }: { closeAction: () => void }) => {
-    const [confirmation, setConfirmation] = useState(false);
+    // const [confirmation, setConfirmation] = useState(false);
+    const [contact, setContact] = useState<ContactInfo>();
     const closeButton = useMemo(
-        () => (
-            <button onClick={closeAction} className='a black w-100'>
-                {confirmation ? "Close" : "Cancel"}
-            </button>
-        ),
-        [confirmation]
+        () => <Button action={closeAction}>{contact ? "Close" : "Cancel"}</Button>,
+        [contact]
     );
 
+    const handleConfirmation = (contact: ContactInfo) => {
+        // setConfirmation(true);
+        setContact(contact);
+    }
+
+    if (contact)
+        return <Confirmation closeBtn={closeButton} contact={contact} />
+
     return (
-        <>
-            {confirmation ? (
-                <Confirmation closeBtn={closeButton} />
-            ) : (
-                <EmailForm confirm={() => setConfirmation(true)} closeBtn={closeButton} />
-            )}
-        </>
+        <StyledContactForm>
+            <EmailForm confirm={handleConfirmation} closeBtn={closeButton} />
+        </StyledContactForm>
     );
 };
 
-const Confirmation = ({ closeBtn }: { closeBtn: JSX.Element }) => (
-    <div style={{ textAlign: "center" }}>
-        <h2 className='h1 my-1'>Chat Soon!</h2>
+
+const Confirmation = ({ contact, closeBtn }: { contact: ContactInfo, closeBtn: JSX.Element }) => (
+    <StyledContactForm className="text-center">
+        <h2 className='h1 my-1'>Chat Soon {contact.name}!</h2>
+        <p>I'll response to {contact.email}</p>
         {closeBtn}
-    </div>
+    </StyledContactForm>
 );
 
 const ErrorEl = ({ error }: { error: string }) => {
     return (
-        <div className='roboto' style={{ color: "var(--color-secondary)" }}>
-            <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='12'
-                height='12'
-                fill='var(--color-secondary)'
-                viewBox='0 0 16 16'
-            >
-                <path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z' />
-            </svg>{" "}
+        <FormError>
+            <AlertIcon/>{" "}
             {error}
-        </div>
+        </FormError>
     );
 };
 
@@ -61,8 +65,7 @@ const Input = ({ error, label, value, type, id, handleChange, validate }: IInput
     return (
         <div style={{ display: "grid", gap: "0.5rem" }}>
             <label
-                className='a'
-                htmlFor='contact-email'
+                htmlFor={id}
                 style={{
                     color: `var(${typeof error.type === "function" ? "--color-secondary" : "--color-black"})`,
                 }}
@@ -77,39 +80,42 @@ const Input = ({ error, label, value, type, id, handleChange, validate }: IInput
 
 const sendEmail = async (
     email: { name: string; email: string; message: string },
-    cb: () => void,
+    cb: ({name, email}: {name: string, email: string}) => void,
     errorCb: () => void
 ) => {
-    console.log(email);
-    let emailRes;
     try {
-        emailRes = await fetch("https://g11bcgp5ef.execute-api.us-east-1.amazonaws.com/default/PortfolioMailer", {
+        const emailRes = await fetch(import.meta.env.VITE_EMAIL_ENDPOINT, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "X-Api-Key": import.meta.env.VITE_API_KEY,
             },
-            mode: "no-cors",
+            // mode: "no-cors",
+            cache: 'no-cache',
             body: JSON.stringify(email),
         });
-        console.log("emailRes", emailRes);
-        const result = await emailRes.json();
-        console.log("resttttttt", result);
 
-        if (result.status === 200) {
-            cb();
-        } else {
-            errorCb();
+        console.log('email', emailRes)
+
+        const result = await emailRes.json();
+        console.log('result', result)
+        const user = {
+            name: email.name,
+            email: result.envelope.from
         }
+
+        emailRes.status === 200 ? cb(user) : errorCb();
+
     } catch (err) {
         console.log("err", err);
+        errorCb();
     }
 };
 
 const EmailRegex =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const EmailForm = ({ confirm, closeBtn }: { confirm: () => void; closeBtn: JSX.Element }) => {
+const EmailForm = ({ confirm, closeBtn }: { confirm: (contact: ContactInfo) => void; closeBtn: JSX.Element }) => {
     const [loading, setLoading] = useState(false);
 
     const [error, setError] = useState({
@@ -149,9 +155,9 @@ const EmailForm = ({ confirm, closeBtn }: { confirm: () => void; closeBtn: JSX.E
         // Send email
         sendEmail(
             { name, email, message },
-            () => {
+            (contact: ContactInfo) => {
                 setTimeout(() => {
-                    confirm();
+                    confirm(contact);
 
                     setLoading(false);
                 }, 1000);
@@ -238,7 +244,6 @@ const EmailForm = ({ confirm, closeBtn }: { confirm: () => void; closeBtn: JSX.E
 
             <div style={{ display: "grid", gap: "0.5rem" }}>
                 <label
-                    className='a'
                     htmlFor='contact-message'
                     style={{
                         color: `var(${typeof error.msg.type === "function" ? "--color-secondary" : "--color-black"})`,
@@ -253,16 +258,17 @@ const EmailForm = ({ confirm, closeBtn }: { confirm: () => void; closeBtn: JSX.E
                     name='contact-message'
                     id='contact-message'
                     rows={6}
-                    // minLength={50}
                 />
                 {error.msg}
             </div>
 
             <div style={{ display: "flex", gap: "1rem" }}>
                 {closeBtn}
-                <button type='submit' className='a black w-100'>
+                <Button type="submit">
                     {loading ? "Sending..." : <>Send &rarr;</>}
-                </button>
+                </Button>
+                {/* <button type='submit' className='a black w-100'> */}
+                {/* </button> */}
             </div>
         </form>
     );

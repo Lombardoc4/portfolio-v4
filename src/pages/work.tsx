@@ -61,6 +61,49 @@ function WorkPage({details = false} : {details?: boolean}) {
     return (
         <div className='container'>
             {/* <h1>Work</h1> */}
+            <Link to="/work" className="h1 bungee" style={{color: 'var(--color-primary)', fontSize: '5rem', marginTop: '2rem'}}>
+                <motion.span
+                  initial={{ opacity: 0, y: '100%' }}
+                  whileInView={{ opacity: 1, y: '0' }}
+                  transition={{
+                    ease: "linear",
+                  }}
+            >
+                W
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: '100%' }}
+                  whileInView={{ opacity: 1, y: '0' }}
+                  transition={{
+                    ease: "linear",
+                    delay: 0.1
+                  }}
+            >
+                O
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: '100%' }}
+                  whileInView={{ opacity: 1, y: '0' }}
+                  transition={{
+                    ease: "linear",
+                    delay: 0.2
+
+                  }}
+            >
+                R
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: '100%' }}
+                  whileInView={{ opacity: 1, y: '0' }}
+                  transition={{
+                    ease: "linear",
+                    delay: 0.3
+
+                  }}
+            >
+                K
+                </motion.span>
+            </Link>
 
             {workLibrary.map((work, i) => {
                 return (

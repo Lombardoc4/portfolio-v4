@@ -49,10 +49,10 @@ const STSBubbles = () => {
 }
 
 
-export const HorizontalBubbles = ({ count }: { count: number }) => {
+export const HorizontalBubbles = ({ count, marginClass }: { count: number, marginClass?: string }) => {
 
     return (
-        <div className="container my-2">
+        <div className={"container my-2 " + marginClass}>
 
         {Array.from(Array(count)).map((_v, i) => {
             return (
