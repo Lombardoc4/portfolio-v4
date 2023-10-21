@@ -34,7 +34,6 @@ import Valley from "./assets/analog/valley-o-time.png"
 import VillageSafety from "./assets/analog/village-safety.png"
 
 
-
 export interface IArtPiece {
     title: string;
     description: string;
@@ -44,14 +43,8 @@ export interface IArtPiece {
     video?: JSX.Element
 }
 
-
-
-
-
-const IMG = ({src} : {src: string}) => <img src={src} style={{width: '100%'}}/>
-const VIDEO = ({src} : {src: string}) => <video style={{width: '100%'}} playsInline={true} controls disablePictureInPicture controlsList="nodownload noplaybackrate noremoteplayback" ><source src={src} type="video/mp4"/>Sorry, your browser doesn't support embedded videos.</video>
-// const VIDEO = ({src} : {src: string}) => <iframe style={{width: '100%', height: 'auto'}} src="https://www.youtube.com/embed/VEaXQ_IPCb4?si=v7gFvZJM9YseaEd2" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-
+const IMG = ({src} : {src: string}) => <img src={src} />
+const VIDEO = ({src} : {src: string}) => <video playsInline={true} controls disablePictureInPicture controlsList="nodownload noplaybackrate noremoteplayback" ><source src={src} type="video/mp4"/>Sorry, your browser doesn't support embedded videos.</video>
 
 export const artLibrary: IArtPiece[] = [
     {
@@ -62,24 +55,31 @@ export const artLibrary: IArtPiece[] = [
         type: "digital",
     },
     {
-        title: "CERN",
-        year: "2022",
-        description: "Adobe Illustrator",
-        img: <IMG src={CERN} />,
-        type: "digital",
-    },
-    {
-        title: "Intel",
+        title: "The Monolith",
         year: "2023",
-        description: "Adobe Illustrator",
-        img: <IMG src={Intel} />,
-        type: "digital",
+        description: "Acrylic on Canvas",
+        img: <IMG src={Monolith} />,
+        type: "analog",
     },
     {
         title: "Aries",
         year: "2023",
         description: "Adobe Illustrator",
         img: <IMG src={Aries} />,
+        type: "digital",
+    },
+    {
+        title: "Village Safety",
+        year: "2023",
+        description: "Sand on Beach",
+        img: <IMG src={VillageSafety} />,
+        type: "analog",
+    },
+    {
+        title: "Intel",
+        year: "2022",
+        description: "Adobe Illustrator",
+        img: <IMG src={Intel} />,
         type: "digital",
     },
     {
@@ -90,6 +90,13 @@ export const artLibrary: IArtPiece[] = [
         type: "digital",
     },
     {
+        title: "Lake Powell",
+        year: "2023",
+        description: "Acrylic on Canvas",
+        img: <IMG src={LakePowell} />,
+        type: "analog",
+    },
+    {
         title: "Essence",
         year: "2023",
         description: "Adobe Illustrator",
@@ -97,18 +104,11 @@ export const artLibrary: IArtPiece[] = [
         type: "digital",
     },
     {
-        title: "You are water",
-        year: "2022",
-        description: "Adobe Illustrator",
-        img: <IMG src={YouAreWater} />,
-        type: "digital",
-    },
-    {
-        title: "Spaceway",
-        year: "2020",
-        description: "Adobe Illustator",
-        img: <IMG src={SpaceWay} />,
-        type: "digital",
+        title: "It's All In The Game (Extended)",
+        year: "2023",
+        description: "Filmed on Minolta XL-400 Super 8",
+        video: <YoutubePlayer embedId='VEaXQ_IPCb4?si=dPazIBLcjFxMnnQD' />,
+        type: "video",
     },
     {
         title: "Potential",
@@ -118,60 +118,11 @@ export const artLibrary: IArtPiece[] = [
         type: "digital",
     },
     {
-        title: "Melting World",
-        year: "2020",
-        description: "Adobe Photoshop",
-        img: <IMG src={Melting} />,
-        type: "digital",
-    },
-    {
         title: "Even Nuclei",
         year: "2023",
         description: "Adobe Illustrator",
         img: <IMG src={EvenNuclei} />,
         type: "digital",
-    },
-    {
-        title: "Dalia",
-        year: "2017",
-        description: "Adobe Photoshop",
-        img: <IMG src={Dalia} />,
-        type: "digital",
-    },
-    {
-        title: "Mirage",
-        year: "2017",
-        description: "Adobe Photoshop",
-        img: <IMG src={Mirage} />,
-        type: "digital",
-    },
-    {
-        title: "Nature Collage",
-        year: "2021",
-        description: "Marker & Photo Clipping on Printer Paper",
-        img: <IMG src={NatureCollage} />,
-        type: "analog",
-    },
-    {
-        title: "Orbs",
-        year: "2021",
-        description: "Acrylic on Canvas",
-        img: <IMG src={Orbs} />,
-        type: "analog",
-    },
-    {
-        title: "The Monolith",
-        year: "2023",
-        description: "Acrylic on Canvas",
-        img: <IMG src={Monolith} />,
-        type: "analog",
-    },
-    {
-        title: "The Walker",
-        year: "2022",
-        description: "Acrylic, Silicon Oil, Torch on Canvas",
-        img: <IMG src={Walker} />,
-        type: "analog",
     },
     {
         title: "Valley o time",
@@ -188,17 +139,24 @@ export const artLibrary: IArtPiece[] = [
         type: "analog",
     },
     {
-        title: "Jungle Boogie 2",
-        year: "2018",
-        description: "Sharpie on Canvas",
-        img: <IMG src={JungleBoogie} />,
-        type: "analog",
+        title: "CERN",
+        year: "2022",
+        description: "Adobe Illustrator",
+        img: <IMG src={CERN} />,
+        type: "digital",
     },
     {
-        title: "Lake Powell",
-        year: "2023",
-        description: "Acrylic on Canvas",
-        img: <IMG src={LakePowell} />,
+        title: "You are water",
+        year: "2022",
+        description: "Adobe Illustrator",
+        img: <IMG src={YouAreWater} />,
+        type: "digital",
+    },
+    {
+        title: "The Walker",
+        year: "2022",
+        description: "Acrylic, Silicon Oil, Torch on Canvas",
+        img: <IMG src={Walker} />,
         type: "analog",
     },
     {
@@ -206,20 +164,6 @@ export const artLibrary: IArtPiece[] = [
         year: "2022",
         description: "Acrylic on Canvas",
         img: <IMG src={SpringWarmth} />,
-        type: "analog",
-    },
-    {
-        title: "Longing for Green",
-        year: "2019",
-        description: "Acrylic on Canvas",
-        img: <IMG src={Longing} />,
-        type: "analog",
-    },
-    {
-        title: "Under Ice Caps",
-        year: "2019",
-        description: "Acrylic on Canvas",
-        img: <IMG src={IceCaps} />,
         type: "analog",
     },
     {
@@ -237,20 +181,6 @@ export const artLibrary: IArtPiece[] = [
         type: "analog",
     },
     {
-        title: "Village Safety",
-        year: "2023",
-        description: "Sand on Beach",
-        img: <IMG src={VillageSafety} />,
-        type: "analog",
-    },
-    {
-        title: "The Cave",
-        year: "2020",
-        description: "Marker on Construction Paper",
-        img: <IMG src={Cave} />,
-        type: "analog",
-    },
-    {
         title: "Snow",
         year: "2021",
         description: "Acrylic on Canvas",
@@ -265,15 +195,75 @@ export const artLibrary: IArtPiece[] = [
         type: "video",
     },
     {
-        title: "It's All In The Game (Extended)",
-        year: "2023",
-        description: "Filmed on Minolta XL-400 Super 8",
-        video: <YoutubePlayer embedId='VEaXQ_IPCb4?si=dPazIBLcjFxMnnQD' />,
-        type: "video",
+        title: "Orbs",
+        year: "2021",
+        description: "Acrylic on Canvas",
+        img: <IMG src={Orbs} />,
+        type: "analog",
     },
-    // {
-    //     title: "Art Piece",
-    //     description: "Made with ...",
-    //     video: <VIDEO src="https://crislombardo.com/video/babyLupine.mp4"/>,
-    // },
+    {
+        title: "Nature Collage",
+        year: "2021",
+        description: "Marker & Photo Clipping on Printer Paper",
+        img: <IMG src={NatureCollage} />,
+        type: "analog",
+    },
+    {
+        title: "Spaceway",
+        year: "2020",
+        description: "Adobe Illustator",
+        img: <IMG src={SpaceWay} />,
+        type: "digital",
+    },
+    {
+        title: "Melting World",
+        year: "2020",
+        description: "Adobe Photoshop",
+        img: <IMG src={Melting} />,
+        type: "digital",
+    },
+    {
+        title: "The Cave",
+        year: "2020",
+        description: "Marker on Construction Paper",
+        img: <IMG src={Cave} />,
+        type: "analog",
+    },
+
+    {
+        title: "Longing for Green",
+        year: "2019",
+        description: "Acrylic on Canvas",
+        img: <IMG src={Longing} />,
+        type: "analog",
+    },
+    {
+        title: "Under Ice Caps",
+        year: "2019",
+        description: "Acrylic on Canvas",
+        img: <IMG src={IceCaps} />,
+        type: "analog",
+    },
+    {
+        title: "Jungle Boogie 2",
+        year: "2018",
+        description: "Sharpie on Canvas",
+        img: <IMG src={JungleBoogie} />,
+        type: "analog",
+    },
+
+    {
+        title: "Dalia",
+        year: "2017",
+        description: "Adobe Photoshop",
+        img: <IMG src={Dalia} />,
+        type: "digital",
+    },
+    {
+        title: "Mirage",
+        year: "2017",
+        description: "Adobe Photoshop",
+        img: <IMG src={Mirage} />,
+        type: "digital",
+    },
 ];

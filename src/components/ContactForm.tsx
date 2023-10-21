@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { SpringBubbles } from "./Bubble";
 import { Button } from "./Button";
-import { FormError, StyledContactForm } from "./StyledContactForm";
+import { FormError, StyledContactForm } from "../styledComponents/StyledContactForm";
 import { AlertIcon } from "../icons";
 
 
