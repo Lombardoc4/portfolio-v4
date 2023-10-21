@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { motion } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 interface IBubble {
@@ -42,62 +43,77 @@ export const Bubble = ({ img, title, link, position, size }: IBubble) => {
     );
 };
 
-const STSBubbles = () => {
-    return Array.from(Array(10)).map((_v, i) => (
-        <div key={'stsBub' + i} className='side-to-side'></div>
-    ))
-}
+export const HorizontalBubbles = ({ count, marginClass }: { count: number; marginClass?: string }) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [translateX, setTranslateX] = useState(100);
 
+    useEffect(() => {
+        const setWidth = () => {
+            setTranslateX(containerRef.current ? containerRef.current.offsetWidth - 32 : 100);
+        };
 
-export const HorizontalBubbles = ({ count, marginClass }: { count: number, marginClass?: string }) => {
+        setWidth();
+        window.addEventListener("resize", setWidth);
+        return () => window.removeEventListener("resize", setWidth);
+    }, [containerRef]);
 
     return (
         <div className={"container my-2 " + marginClass}>
-
-        {Array.from(Array(count)).map((_v, i) => {
-            return (
-                <div key={"hBub" + i} className="side-to-side-container" >
-                <STSBubbles/>
-            </div>
-        );
-    })}
-    </div>
-    )
-};
-
-export const VerticalBubbles = ({ count }: { count: number }) => {
-
-    return (
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
             {Array.from(Array(count)).map((_v, i) => (
-                <div key={"vBubs" + i} className={"up-down-container " + (i % 2 === 0 ? "invert" : "")}>
-                    <div className='up-down'></div>
-                    <div className='up-down'></div>
-                    <div className='up-down'></div>
-                    <div className='up-down'></div>
-                    <div className='up-down'></div>
+                <div key={"hBub" + i} ref={containerRef} className='side-to-side-container'>
+                    {Array.from(Array(10)).map((_v, i) => (
+                        <motion.div
+                            key={"stsBub" + i}
+                            className='side-to-side'
+                            style={{ willChange: "transform, filter" }}
+                            animate={{
+                                filter: ["blur(0)", "blur(3px)", "blur(0)"],
+                                x: i % 2 === 0 ? [translateX, 0, translateX] : [0, translateX, 0],
+                            }}
+                            transition={{
+                                duration: 10,
+                                delay: Math.floor(i / 2) * 0.2,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                        />
+                    ))}
                 </div>
             ))}
         </div>
     );
 };
 
+// export const VerticalBubbles = ({ count }: { count: number }) => {
+//     return (
+//         <div style={{ display: "flex", justifyContent: "space-between" }}>
+//             {Array.from(Array(count)).map((_v, i) => (
+//                 <div key={"vBubs" + i} className={"up-down-container " + (i % 2 === 0 ? "invert" : "")}>
+//                     <div className='up-down'></div>
+//                     <div className='up-down'></div>
+//                     <div className='up-down'></div>
+//                     <div className='up-down'></div>
+//                     <div className='up-down'></div>
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// };
+
 export const SpringBubbles = () => {
     const [width, setWidth] = useState(320);
     const springRef = useCallback((node: HTMLDivElement) => {
         if (node !== null && node.parentElement !== null) {
-          setWidth(node.parentElement.getBoundingClientRect().width);
+            setWidth(node.parentElement.getBoundingClientRect().width);
         }
-      }, []);
-
+    }, []);
 
     return (
-        <div  ref={springRef} style={{ display: "flex", height: "0.75rem", mixBlendMode: 'difference' }}>
+        <div ref={springRef} style={{ display: "flex", height: "0.75rem", justifyContent: 'space-evenly'}}>
             {width > 2 &&
-            Array.from(Array(Math.floor(width / 2))).map((_v, i) => (
-                <div key={'spring' + i} className='spring' style={{ animationDelay: 200 * i + "ms" }} />
-                ))
-            }
+                Array.from(Array(Math.floor(width / 8))).map((_v, i) => (
+                    <div key={"spring" + i} className='spring' style={{ animationDelay: 200 * i + "ms" }} />
+                ))}
         </div>
     );
 };

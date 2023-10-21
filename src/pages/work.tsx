@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 
 import DEM from "../assets/dem.png";
 import DryEye from "../assets/dry-eye-july.png";
@@ -9,8 +8,19 @@ import Techtonic from "../assets/techtonic.png";
 import { Fragment, useRef } from "react";
 import { SpringBubbles } from "../components/Bubble";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { TransitionTitle } from "../components/TransitionTitle";
+import { Clock } from "../components/Clock";
+import {
+    StyledClockContainer,
+    StyledImgLink,
+    StyledWorkPage,
+    StyledWorkPageContainer,
+    WorkSegment,
+    WorkSegmentLink,
+} from "../styledComponents/StyledWorkPage";
+import { StyledHomeLink } from "../styledComponents/StyledHomePage";
 
-const workLibrary = [
+export const workLibrary = [
     {
         title: "National Park Explorer",
         role: "Frontend",
@@ -57,79 +67,121 @@ const workLibrary = [
     },
 ];
 
-function WorkPage({details = false} : {details?: boolean}) {
+
+function WorkPage({ details = false }: { details?: boolean }) {
+    const workSection = useRef<HTMLDivElement>(null)
+    const { scrollYProgress } = useScroll({
+        target: workSection,
+        offset: ['start end', 'end start']
+    });
+    const clockOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 0.25, 0.25, 0])
+
     return (
-        <div className='container'>
-            {/* <h1>Work</h1> */}
-            <Link to="/work" className="h1 bungee" style={{color: 'var(--color-primary)', fontSize: '5rem', marginTop: '2rem'}}>
-                <motion.span
-                  initial={{ opacity: 0, y: '100%' }}
-                  whileInView={{ opacity: 1, y: '0' }}
-                  transition={{
-                    ease: "linear",
-                  }}
-            >
-                W
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, y: '100%' }}
-                  whileInView={{ opacity: 1, y: '0' }}
-                  transition={{
-                    ease: "linear",
-                    delay: 0.1
-                  }}
-            >
-                O
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, y: '100%' }}
-                  whileInView={{ opacity: 1, y: '0' }}
-                  transition={{
-                    ease: "linear",
-                    delay: 0.2
+        <StyledWorkPage className='container' ref={workSection}>
+            <StyledClockContainer style={{ opacity: clockOpacity }}>
+                <Clock />
+            </StyledClockContainer>
 
-                  }}
-            >
-                R
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, y: '100%' }}
-                  whileInView={{ opacity: 1, y: '0' }}
-                  transition={{
-                    ease: "linear",
-                    delay: 0.3
+            <TransitionTitle title='Work' className="mt-2" />
 
-                  }}
-            >
-                K
-                </motion.span>
-            </Link>
 
-            {workLibrary.map((work, i) => {
-                return (
-                    <Fragment key={work.title}>
-                        <WorkSection {...work} details={details} />
-                        {i !== workLibrary.length - 1 && <div className="mt-1"><SpringBubbles /></div>}
-                    </Fragment>
-                );
-            })}
-        </div>
+            {details ? (
+                <AllWorkSections details={details} />
+            ) : (
+                <>
+                <StyledHomeLink to='work' className='underline d-inline-block'>all &rarr;</StyledHomeLink>
+                <StyledWorkPageContainer>
+                    <AllWorkSections />
+                </StyledWorkPageContainer>
+
+                </>
+            )}
+        </StyledWorkPage>
     );
 }
 
-interface IWorkSection {
-    img?: string;
+interface ImgLinkProps {
+    img: string;
+    link: string;
+}
+
+interface IWorkSection extends ImgLinkProps {
     title: string;
     role: string;
-    link: string;
-    details: boolean
+    details: boolean;
+    children: React.ReactNode;
     description?: string;
 }
 
-const WorkSection = ({ img, title, role, link, description, details }: IWorkSection) => {
-    const sectionRef = useRef(null)
+const AllWorkSections = ({details = false }: {details?: boolean}) => {
+    return workLibrary.map((work, i) => (
+        <Fragment key={work.title}>
+            {details ? (
+                <DetailedWorkSection {...work} details={details}>
+                    {i !== workLibrary.length - 1 && (
+                        <div className="work-container">
+                            <SpringBubbles />
+                        </div>
+                    )}
+                </DetailedWorkSection>
+            ) : (
+                <>
+                <WorkSection {...work} details={details}>
+                </WorkSection>
+                    {i !== workLibrary.length - 1 && (
+                        <div className="work-container">
+                            <SpringBubbles />
+                        </div>
+                    )}
+                </>
+            )}
+        </Fragment>
+    ));
+}
+
+const DetailedWorkSection = (props: IWorkSection) => (
+    <div className="work-container">
+        <StyledWorkPageContainer>
+            <WorkSection {...props}/>
+        </StyledWorkPageContainer>
+        {props.children}
+    </div>
+)
+
+
+export const WorkSection = ({ img, title, role, link, description, details }: IWorkSection) => {
+    return (
+            <WorkSegment className='segment'>
+                {details && <ImgLink img={img} link={link} />}
+                <div className='main-copy w-100'>
+                    <WorkSegmentLink target='_blank' to={link}>
+                        <div>
+                            <h2>{title}</h2>
+                            <p className='pixel'>{role}</p>
+                        </div>
+
+                        {!details && <p className='symbol'>&#8514;</p>}
+                    </WorkSegmentLink>
+
+                    {details && description}
+                </div>
+            </WorkSegment>
+    );
+};
+
+const ImgLink = ({ img, link }: ImgLinkProps) => {
+    const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: sectionRef,
+<<<<<<< 02e0dbdd2e9aeef433de8407e6b3d0bdf57dabfb
+=======
+<<<<<<< refactor
+<<<<<<< fd97f4e29896c6d52084b789e4b24c7d895aa38f
+=======
+<<<<<<< refactor
+<<<<<<< refactor
+>>>>>>> massive update for mobile and desktop styling
+>>>>>>> massive update for mobile and desktop styling
         offset: ['start end', 'center 0.66']
       })
     const imgYTranslate = useTransform(scrollYProgress, [0, 1], [100, 0])
@@ -182,6 +234,28 @@ const WorkSection = ({ img, title, role, link, description, details }: IWorkSect
                 {details && description}
             </div>
         </>
+=======
+        offset: ["start end", "center 0.66"],
+    });
+    const imgYTranslate = useTransform(scrollYProgress, [0, 1], [100, 0]);
+
+    return (
+        <motion.div
+            style={{
+                opacity: scrollYProgress,
+                flex: 3,
+            }}
+        >
+            <StyledImgLink target='_blank' to={link} ref={sectionRef}>
+                <motion.img
+                    style={{
+                        translateY: imgYTranslate,
+                    }}
+                    src={img}
+                />
+            </StyledImgLink>
+        </motion.div>
+>>>>>>> massive update for mobile and desktop styling
     );
 };
 

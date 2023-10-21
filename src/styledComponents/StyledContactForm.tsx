@@ -12,6 +12,9 @@ export const StyledContactForm = styled.div`
     border: 1px solid var(--color-black);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
+
+    max-width: 420px;
+    margin: auto;
 `
 
 export const FormError = styled.div.attrs({

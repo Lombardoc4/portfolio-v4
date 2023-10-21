@@ -1,71 +1,45 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { AnalogTitle, ArtTitle, DigitalTitle, VideoTitle } from "../main";
 import { IArtPiece, artLibrary } from "../artLibrary";
+<<<<<<< 2a3a6540c1aa106841fbe78f952c3e32d534ce0f
+=======
+<<<<<<< refactor
+<<<<<<< 94f7ad83ba0f29f9addff2df421c651c3e2060e9
+=======
+<<<<<<< refactor
+<<<<<<< refactor
+>>>>>>> massive update for mobile and desktop styling
+=======
+import { SpringBubbles } from "../components/Bubble";
+>>>>>>> remove typescript errors
+>>>>>>> massive update for mobile and desktop styling
 import { Fragment } from "react";
+=======
+import { Fragment, useEffect, useRef, useState } from "react";
+import { StyledArtNav, StyledArtNavLink, StyledArtPiece, StyledArtPieceAsset } from "../styledComponents/StyledArtPage";
+import { TransitionTitle } from "../components/TransitionTitle";
+import { motion, useScroll, useTransform } from "framer-motion";
+>>>>>>> massive update for mobile and desktop styling
 
 export const ArtLayout = () => {
     return (
         <>
-            <ArtNav />
             <Outlet />
         </>
     );
 };
 
-export const ArtNav = () => {
-    return (
-        <div className='art-nav container'>
-            <ArtCard
-                link='/art/analog'
-                img='/analog-art.png'
-                title={
-                    <>
-                        <AnalogTitle />
-                    </>
-                }
-            />
-            <ArtCard
-                link='/art/digital'
-                img='/digi-art.png'
-                title={
-                    <>
-                        <DigitalTitle />
-                    </>
-                }
-            />
-            <ArtCard link='/art/video' img='/video.png' title={<VideoTitle />} />
-        </div>
-    );
-};
-
-function shuffle(array: IArtPiece[]) {
-    let currentIndex = array.length,
-        randomIndex;
-
-    // While there remain elements to shuffle.
-    while (currentIndex > 0) {
-        // Pick a remaining element.
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-
-        // And swap it with the current element.
-        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-    }
-
-    return array;
-}
-
 function ArtPage() {
-    const allArtShuffle = shuffle(artLibrary);
-
     return (
-        <div className='container'>
-            <h1 style={{ marginTop: "3rem" }}>Art</h1>
-            <p>A random shuffle of my art</p>
+        <div className='container my-2'>
+            <TransitionTitle title='Art' />
+            {/* <p>A random shuffle of my art</p> */}
 
-            {allArtShuffle.map((artPiece: IArtPiece) => (
+            <ArtNav />
+
+            {artLibrary.map((artPiece: IArtPiece) => (
                 <Fragment key={artPiece.title}>
-                    <ArtPiece {...artPiece}  />
+                    <ArtPiece {...artPiece} />
                 </Fragment>
             ))}
         </div>
@@ -74,9 +48,68 @@ function ArtPage() {
 
 export default ArtPage;
 
-function ArtCard({ link, img, title }: IArtCard) {
+export const ArtNav = ({ artPage = true }: { artPage?: boolean }) => {
+    const navLinks = [
+        <ArtNavCard link='/art/analog' img='/analog-art.png' title={<AnalogTitle />} />,
+        <ArtNavCard link='/art/digital' img='/digi-art.png' title={<DigitalTitle />} />,
+        <ArtNavCard link='/art/video' img='/video.png' title={<VideoTitle />} />,
+    ];
+
     return (
-        <NavLink
+        <StyledArtNav $artPage={artPage}>
+            {navLinks.map((link, i) => {
+                return artPage ? (
+                    <AnimatedArtNavCard key={"artNav" + i}>{link}</AnimatedArtNavCard>
+                ) : (
+                    <Fragment key={"artNav" + i}>{link}</Fragment>
+                );
+            })}
+        </StyledArtNav>
+    );
+};
+
+function AnimatedArtNavCard({ children }: { children: React.ReactNode }) {
+    const NavCardRef = useRef(null);
+    const { scrollYProgress } = useScroll();
+    const cardHeight = useTransform(scrollYProgress, [0, 0.025], [300, 100]);
+
+    const [isMobile, setIsMobile] = useState(true);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    if (isMobile) {
+        return children;
+    }
+
+    return (
+        <motion.div
+            ref={NavCardRef}
+            style={{
+                height: cardHeight,
+            }}
+        >
+            {children}
+        </motion.div>
+    );
+}
+
+interface IArtCard {
+    link: string;
+    img: string;
+    title?: JSX.Element;
+}
+
+function ArtNavCard({ link, img, title }: IArtCard) {
+    return (
+        <StyledArtNavLink
             reloadDocument
             to={link}
             className='art-card'
@@ -84,8 +117,8 @@ function ArtCard({ link, img, title }: IArtCard) {
                 backgroundImage: `url(${img})`,
             }}
         >
-            <h2 className='title'>{title}</h2>
-        </NavLink>
+            <h3 className='title'>{title}</h3>
+        </StyledArtNavLink>
     );
 }
 
@@ -93,7 +126,9 @@ export const GalleryPage = ({ type }: { type: "digital" | "analog" | "video" }) 
     const art = artLibrary.filter((art) => art.type === type);
 
     return (
-        <div className='container' style={{ marginTop: "2rem" }}>
+        <div className='container mt-2'>
+            <ArtNav />
+
             <h1>
                 {type === "analog" && <AnalogTitle />}
                 {type === "digital" && <DigitalTitle />}
@@ -119,25 +154,15 @@ export const GalleryPage = ({ type }: { type: "digital" | "analog" | "video" }) 
     );
 };
 
-interface IArtCard {
-    link: string;
-    img: string;
-    title?: JSX.Element;
-}
-
-const ArtPiece = ({ title, year, description, img, video,}: IArtPiece) => {
+const ArtPiece = ({ title, year, description, img, video }: IArtPiece) => {
     return (
-        <div
-            className='segment'
-            style={{
-                marginInline: "-1rem",
-                marginBottom: "4rem",
-            }}
-        >
-            {img}
-            {video}
+        <StyledArtPiece className='segment'>
+            <StyledArtPieceAsset>
+                {img}
+                {video}
+            </StyledArtPieceAsset>
 
-            <div className='title' style={{ marginInline: "1rem" }}>
+            <div className='title'>
                 <h2>{title}</h2>
 
                 <div className='mt-1'>
@@ -145,6 +170,6 @@ const ArtPiece = ({ title, year, description, img, video,}: IArtPiece) => {
                     <p>{description}</p>
                 </div>
             </div>
-        </div>
+        </StyledArtPiece>
     );
 };

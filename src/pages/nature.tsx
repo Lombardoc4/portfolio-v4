@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { StyledArtPiece, StyledArtPieceAsset } from "../styledComponents/StyledArtPage";
 
 export const NaturePage = () => {
     return (
@@ -202,10 +203,16 @@ interface INatureSection {
 const NatureSection = ({ title, subtitle, description, children, img }: INatureSection) => {
     const [readMore, setReadMore] = useState(false);
 
+    // TODO : MAKE LIKE A BLOG POST
+
     return (
-        <div className="my-1">
-            <img src={img} />
             <div className='container my-1' >
+        <StyledArtPiece>
+            <StyledArtPieceAsset>
+                <img src={img} />
+            </StyledArtPieceAsset>
+            <div>
+
                 <h2>{title}</h2>
                 <p className='bungee'>{subtitle}</p>
                 <p>{description}</p>
@@ -213,7 +220,8 @@ const NatureSection = ({ title, subtitle, description, children, img }: INatureS
 
                 {readMore && children}
             </div>
-        </div>
+        </StyledArtPiece>
+            </div>
     );
 };
 

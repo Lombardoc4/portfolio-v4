@@ -1,11 +1,30 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Nav from "./components/Nav";
+<<<<<<< refactor
 import { useEffect, useLayoutEffect, useState } from "react";
 import { HorizontalBubbles } from "./components/Bubble";
 // import { VerticalBubbles } from "./components/Bubble";
 // import { useScroll } from "framer-motion";
+<<<<<<< 26a3f963309b086f5fa123423a3dbf40bc21b19b
+=======
+=======
+import { VerticalBubbles } from "./components/Bubble";
+import { useScroll } from "framer-motion";
+>>>>>>> adding beta warning for desktop
+<<<<<<< 6285bddc74f3ccb8af586a38e0b292a6dd48e7b5
+=======
+=======
+// import { VerticalBubbles } from "./components/Bubble";
+// import { useScroll } from "framer-motion";
+>>>>>>> commenting out unused vars
+=======
+import { useLayoutEffect } from "react";
+import { Footer } from "./components/Footer";
+>>>>>>> massive update for mobile and desktop styling
+>>>>>>> massive update for mobile and desktop styling
+>>>>>>> massive update for mobile and desktop styling
 
-const Wrapper = ({ children }: { children: JSX.Element }) => {
+const ScrollToTopWrapper = ({ children }: { children: React.ReactNode }) => {
     const location = useLocation();
     useLayoutEffect(() => {
         document.documentElement.scrollTo(0, 0);
@@ -13,27 +32,9 @@ const Wrapper = ({ children }: { children: JSX.Element }) => {
     return children;
 };
 
-
-
 function Layout() {
-    const [isMobile, setMobile] = useState(false);
-
-    useEffect(() => {
-        const resizeEvt = () => {
-            setMobile(window.innerWidth <= 700)
-        }
-
-        resizeEvt();
-
-        window.addEventListener('resize', resizeEvt)
-
-        return () => window.removeEventListener('resize', resizeEvt)
-
-    }, [])
-
-
-
     return (
+<<<<<<< refactor
         <Wrapper>
             <>
 <<<<<<< f6ebbe0476f90ba4b83bfdf01b9eb4e2ba8dc99f
@@ -133,6 +134,14 @@ function Layout() {
                 </footer>
             </>
         </Wrapper>
+=======
+        <ScrollToTopWrapper>
+            <div className='page-bg' />
+            <Nav />
+            <Outlet />
+            <Footer />
+        </ScrollToTopWrapper>
+>>>>>>> massive update for mobile and desktop styling
     );
 }
 

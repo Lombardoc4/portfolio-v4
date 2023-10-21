@@ -33,10 +33,9 @@ function Nav() {
                     Art
                 </StyledNavLink>
 
-                {/* TODO : There is no outline on focus-visiible */}
                 <StyledLink className='' tabIndex={-1} onClick={() => toggleModal()}>
                     <ContactIcon />
-                    Contact
+                    Connect
                 </StyledLink>
             </StyledNav>
 
@@ -71,38 +70,45 @@ const modalStyles = {
 const StyledNav = styled.nav`
     z-index: 1000;
     position: fixed;
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
-    max-width: 600px;
+    /* bottom: 1rem; */
+    /* left: 1rem; */
+    /* right: 1rem; */
+    inset: 0;
+    top: unset;
+
+    max-width: 100lvw;
 
     background-color: var(--color-primary);
     color: var(--color-black);
+    padding: 0.5rem;
 
     display: flex;
-    padding: 0.75rem 0.5rem;
-    gap: 0.5rem;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
 
-    border-radius: var(--radius-sm);
-    box-shadow: 0 0 1rem -0.5rem var(--color-primary);
+    /* border-radius: var(--radius-sm); */
+    /* box-shadow: 0 0 1rem -0.5rem var(--color-primary); */
 
-    @media (min-width: 728px) {
-        margin: auto;
-        padding: 0.75rem;
+    @media (min-width: 768px) {
+        max-width: 600px;
+
+
+        position: sticky;
+        margin: 2rem auto;
+        padding: 0.75rem 1rem;
+        top: 2rem;
+        bottom: unset;
+        border-radius: 2rem;
+        box-shadow: 0 0 2rem -1rem var(--color-primary);
     }
 
-    @media (min-width: 728px) {
-        svg {
-            height: 20px;
-            width: 20px;
-        }
-    }
 `;
 
 const StyledLink = styled.div`
+
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.25rem;
@@ -113,12 +119,15 @@ const StyledLink = styled.div`
     box-shadow: 0 0 0.5rem -0.25rem var(--color-black);
     flex: 1;
     line-height: 1;
+    font-size: 0.75rem;
     text-transform: uppercase;
 
-    @media (min-width: 728px) {
-        font-size: 1.25rem;
+    @media (min-width: 768px) {
+        flex-direction: row;
+        font-size: 1rem;
         gap: 0.5rem;
         padding: 0.75rem 1rem;
+        border-radius: 2rem;
     }
 `;
 
