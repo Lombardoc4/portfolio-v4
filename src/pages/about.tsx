@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import { HorizontalBubbles } from "../components/Bubble";
 import WorkPage from "./work";
 import { PhotoHeader } from "./home";
-import { StyledHomeLink } from "../styledComponents/StyledHomePage";
+// import { StyledHomeLink } from "../styledComponents/StyledHomePage";
 import { StyledAboutContainer } from "../styledComponents/StyledAboutPage";
 
 function AboutPage() {

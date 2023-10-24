@@ -34,7 +34,7 @@ import {
     StyledHomeHeaderCopy,
     StyledHomeHeaderImgContainer,
     StyledHomeLink,
-    StyledHomeNature,
+    // StyledHomeNature,
 } from "../styledComponents/StyledHomePage";
 
 function HomePage() {
@@ -245,25 +245,25 @@ const AboutCopy = ({ children, style }: { children: React.ReactNode; style?: Rea
     );
 };
 
-const NatureSection = () => {
-    return (
-        <div className='container'>
-            <StyledHomeNature
-                animate={{ borderColor: ["#FFDB58", "#ba2c2c", "#FFDB58"] }}
-                transition={{ duration: 16, times: [0, 0.5, 1], repeat: Infinity }}
-            >
-                    <TransitionTitle title='Nature' />
-                    <p style={{ fontSize: "1.25rem" }}>
-                        There is endless pleasure to be found in hiking; native plants, breath-taking views, and making new
-                        friends. My friends and I have been traveling around the US since 2018 and love sharing our
-                        experiences.
-                    </p>
-                <StyledHomeLink
-                    to='/nature'
-                >
-                    nature &rarr;
-                </StyledHomeLink>
-            </StyledHomeNature>
-        </div>
-    );
-}
+// const NatureSection = () => {
+//     return (
+//         <div className='container'>
+//             <StyledHomeNature
+//                 animate={{ borderColor: ["#FFDB58", "#ba2c2c", "#FFDB58"] }}
+//                 transition={{ duration: 16, times: [0, 0.5, 1], repeat: Infinity }}
+//             >
+//                     <TransitionTitle title='Nature' />
+//                     <p style={{ fontSize: "1.25rem" }}>
+//                         There is endless pleasure to be found in hiking; native plants, breath-taking views, and making new
+//                         friends. My friends and I have been traveling around the US since 2018 and love sharing our
+//                         experiences.
+//                     </p>
+//                 <StyledHomeLink
+//                     to='/nature'
+//                 >
+//                     nature &rarr;
+//                 </StyledHomeLink>
+//             </StyledHomeNature>
+//         </div>
+//     );
+// }
