@@ -1,6 +1,4 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
-import Nav from "../components/Nav";
-import { Footer } from "../components/Footer";
 import Layout from "../layout";
 import { Clock } from "../components/Clock";
 import { useEffect, useState } from "react";

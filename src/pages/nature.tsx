@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyledArtPiece, StyledArtPieceAsset } from "../styledComponents/StyledArtPage";
+// import { StyledArtPiece, StyledArtPieceAsset } from "../styledComponents/StyledArtPage";
 import { TransitionTitle } from "../components/TransitionTitle";
 import { HorizontalBubbles } from "../components/Bubble";
 
@@ -205,7 +205,7 @@ interface INatureSection {
     img: string
 }
 
-const NatureSection = ({ title, subtitle, description, children, img }: INatureSection) => {
+const NatureSection = ({ title, subtitle, description, children }: INatureSection) => {
     const [readMore, setReadMore] = useState(false);
 
     // TODO : MAKE LIKE A BLOG POST
