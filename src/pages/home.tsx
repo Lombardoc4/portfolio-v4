@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { HorizontalBubbles } from "../components/Bubble";
 import WorkPage from "./work";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
