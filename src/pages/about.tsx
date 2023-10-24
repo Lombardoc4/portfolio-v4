@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { HorizontalBubbles } from "../components/Bubble";
 import WorkPage from "./work";
 import { PhotoHeader } from "./home";
+import { StyledHomeLink } from "../styledComponents/StyledHomePage";
+import { StyledAboutContainer } from "../styledComponents/StyledAboutPage";
 
 function AboutPage() {
     return (
@@ -18,12 +20,14 @@ function AboutPage() {
 
         <PhotoHeader/>
 
+        <HorizontalBubbles count={1}/>
 
-        <div className="container">
+        <StyledAboutContainer className="container">
+
 
             {/* <div className='card'> */}
                 <p>With <span className="underline">4+ years</span> of professional developer experience, I have had the opportunity to work with top healthcare professionals such as <span className="underline">Novartis</span> and <span className="underline">Johnson & Johnson</span>, along with a handful of upcoming musicians.</p>
-                <p className="my-1">The frontend community is consistently releasing new packages and frameworks here are my <span className="underline">go to</span>:</p>
+                {/* <p className="my-1">The frontend community is consistently releasing new packages and frameworks here are my go to:</p>
                     <ul>
                         <li>Vite</li>
                         <li>React</li>
@@ -32,7 +36,13 @@ function AboutPage() {
                         <li>ChatGPT</li>
                         <li>Github Actions</li>
                         <li>AWS ( S3, Lambda, Amplify )</li>
-                    </ul>
+                    </ul> */}
+        </StyledAboutContainer>
+
+
+        <StyledAboutContainer className="container">
+
+
 
                 <p className="mt-1">
                     With any spare time I try to get outside and go hiking, where I can enjoy endless native flora & fauna.
@@ -41,13 +51,12 @@ function AboutPage() {
                     <span className="d-block bungee" style={{display: 'flex', justifyContent: 'space-between'}}><span>coast</span><span>to</span><span>coast</span></span>
                     indulging in endless miles of trails.
                 </p>
-                <Link to='/nature' className="underline d-block" style={{textAlign: 'right', fontSize: '2rem', transform: 'skewX(-15deg)'}}>NATURE &rarr;</Link>
+                {/* <StyledHomeLink to='/nature'>NATURE &rarr;</StyledHomeLink> */}
             {/* </div> */}
-        </div>
+        </StyledAboutContainer>
 
-        <div className="my-1" style={{marginTop: '2rem'}}>
-            <HorizontalBubbles count={3}/>
-        </div>
+        <HorizontalBubbles count={1} />
+        <HorizontalBubbles count={1} marginClass="2 mb-1"/>
 
         <WorkPage/>
         </>

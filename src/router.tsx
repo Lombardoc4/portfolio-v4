@@ -4,12 +4,14 @@ import HomePage from "./pages/home";
 import WorkPage from "./pages/work";
 import ArtPage, { ArtLayout, GalleryPage } from "./pages/art";
 import AboutPage from "./pages/about";
-import { NaturePage } from "./pages/nature";
+import { ErrorPage } from "./pages/404";
+// import { NaturePage } from "./pages/nature";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -41,10 +43,10 @@ export const router = createBrowserRouter([
                     },
                 ],
             },
-            {
-                path: "nature",
-                element: <NaturePage />,
-            },
+            // {
+            //     path: "nature",
+            //     element: <NaturePage />,
+            // },
             {
                 path: "work",
                 element: <WorkPage details={true} />,

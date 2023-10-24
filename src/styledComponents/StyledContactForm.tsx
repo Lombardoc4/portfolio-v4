@@ -15,6 +15,10 @@ export const StyledContactForm = styled.div`
 
     max-width: 420px;
     margin: auto;
+
+    @media (min-width: 768px) {
+        font-size: 1.25rem;
+    }
 `
 
 export const FormError = styled.div.attrs({

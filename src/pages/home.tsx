@@ -52,10 +52,10 @@ function HomePage() {
             <WorkPage />
 
 
-            <HorizontalBubbles count={1} marginClass='my-4 mt-2' />
+            {/* <HorizontalBubbles count={1} marginClass='my-4 mt-2' /> */}
 
             {/* Nature */}
-            <NatureSection/>
+            {/* <NatureSection/> */}
 
             <HorizontalBubbles count={1} marginClass='my-4' />
 

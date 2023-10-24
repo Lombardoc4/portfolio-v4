@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { StyledArtPiece, StyledArtPieceAsset } from "../styledComponents/StyledArtPage";
+import { TransitionTitle } from "../components/TransitionTitle";
+import { HorizontalBubbles } from "../components/Bubble";
 
 export const NaturePage = () => {
     return (
         <>
-            <div className='container mt-1'>
-                <h1>Recreations</h1>
+            <div className='container my-2'>
+                <TransitionTitle title='Nature' />
+
                 <p>Hiking is cool, I've gone on road trips to the west us, Adventuring with friends and solo</p>
             </div>
+
+            <HorizontalBubbles count={1}/>
 
             <NatureSection
                 img='./travel.jpg'
@@ -206,22 +211,30 @@ const NatureSection = ({ title, subtitle, description, children, img }: INatureS
     // TODO : MAKE LIKE A BLOG POST
 
     return (
-            <div className='container my-1' >
-        <StyledArtPiece>
-            <StyledArtPieceAsset>
+        <div className='container'>
+            <div style={{ borderBottom: "1px solid var(--color-white)", paddingBottom: '2rem', marginTop: '2rem' }}>
+                {/* <div style={{ flex: 1, display: 'flex', justifyContent: 'flexEnd', alignItems: 'center', maxHeight: '50vh'}}>
                 <img src={img} />
-            </StyledArtPieceAsset>
-            <div>
+            </div> */}
+                <div style={{ flex: 2 }}>
+                    <h2>{title}</h2>
+                    <p className='bungee'>{subtitle}</p>
+                    <p>{description}</p>
+                    <button className='mt-1' onClick={() => setReadMore(!readMore)}>
+                        {readMore ? "Show Less" : "Read More"}
+                    </button>
 
-                <h2>{title}</h2>
-                <p className='bungee'>{subtitle}</p>
-                <p>{description}</p>
-                <button className="mt-1" onClick={() => setReadMore(!readMore)}>{readMore ? "Show Less" : "Read More"}</button>
-
-                {readMore && children}
+                    {readMore && (
+                        <>
+                            {children}
+                            <button className='mt-1' style={{position: 'sticky', bottom: '6rem'}}  onClick={() => setReadMore(!readMore)}>
+                                {readMore ? "Show Less" : "Read More"}
+                            </button>
+                        </>
+                    )}
+                </div>
             </div>
-        </StyledArtPiece>
-            </div>
+        </div>
     );
 };
 

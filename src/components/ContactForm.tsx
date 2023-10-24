@@ -27,9 +27,9 @@ export const ContactForm = ({ closeAction }: { closeAction: () => void }) => {
         return <Confirmation closeBtn={closeButton} contact={contact} />
 
     return (
-        <StyledContactForm>
+        // <StyledContactForm>
             <EmailForm confirm={handleConfirmation} closeBtn={closeButton} />
-        </StyledContactForm>
+        // </StyledContactForm>
     );
 };
 
@@ -212,11 +212,9 @@ const EmailForm = ({ confirm, closeBtn }: { confirm: (contact: ContactInfo) => v
     };
 
     return (
-        <form onSubmit={submitForm} style={{ display: "grid", gap: "0.5rem" }}>
+        <StyledContactForm onSubmit={submitForm} style={{ display: "grid", gap: "0.5rem" }}>
             <p>
-                Fill out the form and I'll get back to you promptly
-                <br />
-                You can also email me directly at
+                Fill out the form and I'll get back to you promptly. You can also email me directly at
                 <br />
                 <a className="bungee" href='#'>lom13@pm.me</a>
             </p>
@@ -270,6 +268,6 @@ const EmailForm = ({ confirm, closeBtn }: { confirm: (contact: ContactInfo) => v
                 {/* <button type='submit' className='a black w-100'> */}
                 {/* </button> */}
             </div>
-        </form>
+        </StyledContactForm>
     );
 };
