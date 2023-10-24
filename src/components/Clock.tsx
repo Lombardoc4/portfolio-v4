@@ -38,7 +38,7 @@ const getVals = (unit: 'milliseconds' | 'seconds' | 'minutes' | 'hours'): IClock
             };
         case 'seconds':
             return {
-                rotation: (new Date()).getSeconds()  / 60 * 360 + 45,
+                rotation: ((new Date()).getSeconds()  / 60) * 360 + 45,
                 duration: 60,
                 color: "var(--color-primary)",
                 size: '30vh'
@@ -72,6 +72,7 @@ const ClockDial = ({unit}: {unit: 'milliseconds' | 'seconds' | 'minutes' | 'hour
             transition={{
                 duration: duration,
                 repeat: Infinity,
+                ease: 'linear'
             }}
             style={{
                 height: size,
