@@ -40,9 +40,6 @@ import {
 function HomePage() {
     return (
         <>
-
-
-            {/* Header */}
             <PhotoHeader />
 
             <AllAboutSections />
@@ -51,33 +48,22 @@ function HomePage() {
 
             <WorkPage />
 
-
             {/* <HorizontalBubbles count={1} marginClass='my-4 mt-2' /> */}
 
-            {/* Nature */}
             {/* <NatureSection/> */}
 
             <HorizontalBubbles count={1} marginClass='my-4' />
 
+            <div className='container'>
+                <TransitionTitle title='Art' />
 
-            {/* Art */}
-                <div className='container'>
+                <ArtNav artPage={false} />
 
-                    <TransitionTitle title='Art' />
-
-                    <ArtNav artPage={false} />
-
-                    <p style={{ fontSize: "1.25rem" }}>
-                        Art is my sweet release. Unlike code there is no structure, logic, or algorithms to follow.
-                    </p>
-                    <Link
-                        to='/art'
-                        className='underline d-inline-block my-1'
-                        style={{ fontSize: "1.5rem", transform: "skewX(-15deg)" }}
-                    >
-                        art &rarr;
-                    </Link>
-                </div>
+                <p style={{ fontSize: "1.25rem" }}>
+                    Art is my sweet release. Unlike code there is no structure, logic, or algorithms to follow.
+                </p>
+                <StyledHomeLink to='/art'>art &rarr;</StyledHomeLink>
+            </div>
         </>
     );
 }
