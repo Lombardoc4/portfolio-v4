@@ -1,3 +1,4 @@
+<<<<<<< ref
 import { Link } from "react-router-dom";
 <<<<<<< 2a3a6540c1aa106841fbe78f952c3e32d534ce0f
 import {  HorizontalBubbles } from "../components/Bubble";
@@ -19,6 +20,9 @@ import { AnalogTitle, DigitalTitle, VideoTitle } from "../main";
 import {  HorizontalBubbles } from "../components/Bubble";
 >>>>>>> contact form cors
 =======
+=======
+// import { Link } from "react-router-dom";
+>>>>>>> correct clock animation ease
 import { HorizontalBubbles } from "../components/Bubble";
 >>>>>>> massive update for mobile and desktop styling
 >>>>>>> massive update for mobile and desktop styling
