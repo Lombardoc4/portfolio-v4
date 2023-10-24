@@ -11,12 +11,13 @@ const ScrollToTopWrapper = ({ children }: { children: React.ReactNode }) => {
     return children;
 };
 
-function Layout() {
+function Layout({children}: {children?: React.ReactNode}) {
     return (
         <ScrollToTopWrapper>
             <div className='page-bg' />
             <Nav />
             <Outlet />
+            {children}
             <Footer />
         </ScrollToTopWrapper>
     );

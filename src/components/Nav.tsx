@@ -44,7 +44,7 @@ function Nav() {
                 onAfterClose={() => document.body.classList.remove("modalMode")}
                 onRequestClose={() => setIsOpen(false)}
                 style={modalStyles}
-                className='container'
+                className='modal'
             >
                 <ContactForm closeAction={() => setIsOpen(false)} />
             </Modal>
@@ -58,6 +58,8 @@ export default Nav;
 const modalStyles = {
     content: {
         // position: 'relative',
+        margin: 'auto',
+        maxWidth: '90%',
     },
     overlay: {
         backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -70,9 +72,6 @@ const modalStyles = {
 const StyledNav = styled.nav`
     z-index: 1000;
     position: fixed;
-    /* bottom: 1rem; */
-    /* left: 1rem; */
-    /* right: 1rem; */
     inset: 0;
     top: unset;
 
@@ -87,8 +86,6 @@ const StyledNav = styled.nav`
     align-items: center;
     gap: 0.5rem;
 
-    /* border-radius: var(--radius-sm); */
-    /* box-shadow: 0 0 1rem -0.5rem var(--color-primary); */
 
     @media (min-width: 768px) {
         max-width: 600px;
