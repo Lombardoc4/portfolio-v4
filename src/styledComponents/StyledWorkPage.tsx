@@ -58,9 +58,9 @@ export const WorkSegment = styled.div`
         display: flex;
         flex-direction: column;
     }
-    @media (min-width: 1200px) {
+    /* @media (min-width: 1200px) {
         flex-direction: row-reverse;
-    }
+    } */
 
     @media (min-width: 768px) {
         .main-copy {
