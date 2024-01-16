@@ -109,8 +109,11 @@ interface IWorkSection extends ImgLinkProps {
     title: string;
     role: string;
     details: boolean;
-    children: React.ReactNode;
+    // children?: React.ReactNode;
     description?: string;
+}
+interface IDetailedWorkSection extends IWorkSection {
+    children?: React.ReactNode;
 }
 
 const AllWorkSections = ({details = false }: {details?: boolean}) => {
@@ -126,8 +129,8 @@ const AllWorkSections = ({details = false }: {details?: boolean}) => {
                 </DetailedWorkSection>
             ) : (
                 <>
-                <WorkSection {...work} details={details}>
-                </WorkSection>
+                <WorkSection {...work} details={details}/>
+                {/* </WorkSection> */}
                     {i !== workLibrary.length - 1 && (
                         <div className="work-container">
                             <SpringBubbles />
@@ -139,7 +142,7 @@ const AllWorkSections = ({details = false }: {details?: boolean}) => {
     ));
 }
 
-const DetailedWorkSection = (props: IWorkSection) => (
+const DetailedWorkSection = (props:  IDetailedWorkSection) => (
     <div className="work-container">
         <StyledWorkPageContainer>
             <WorkSection {...props}/>
