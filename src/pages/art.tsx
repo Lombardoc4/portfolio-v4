@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 
+<<<<<<< ref
 import { IArtPiece, artLibrary } from "../artLibrary";
 <<<<<<< 2a3a6540c1aa106841fbe78f952c3e32d534ce0f
 =======
@@ -15,6 +16,17 @@ import { SpringBubbles } from "../components/Bubble";
 >>>>>>> massive update for mobile and desktop styling
 import { Fragment } from "react";
 =======
+<<<<<<< 3442e20374e84d166f54c6985e09ce6583222261
+=======
+=======
+import { Outlet } from "react-router-dom";
+import { AnalogTitle, ArtTitle, DigitalTitle, VideoTitle } from "../main";
+import { IArtPiece, artLibrary } from "../artLibrary";
+>>>>>>> massive update for mobile and desktop styling
+=======
+import { IArtPiece, ARTLIBRARY } from "../artLibrary";
+>>>>>>> init refactor
+>>>>>>> init refactor
 import { Fragment, useEffect, useRef, useState } from "react";
 import { StyledArtNav, StyledArtNavLink, StyledArtPiece, StyledArtPieceAsset } from "../components/styledComponents/StyledArtPage";
 import { TransitionTitle } from "../components/TransitionTitle";
@@ -44,7 +56,7 @@ function ArtPage() {
 
             <ArtNav />
 
-            {artLibrary.map((artPiece: IArtPiece) => (
+            {ARTLIBRARY.map((artPiece: IArtPiece) => (
                 <Fragment key={artPiece.title}>
                     <ArtPiece {...artPiece} />
                 </Fragment>
@@ -130,7 +142,7 @@ function ArtNavCard({ link, img, title }: IArtCard) {
 }
 
 export const GalleryPage = ({ type }: { type: "digital" | "analog" | "video" }) => {
-    const art = artLibrary.filter((art) => art.type === type);
+    const art = ARTLIBRARY.filter((art) => art.type === type);
 
     return (
         <div className='container mt-2'>

@@ -1,6 +1,23 @@
 import { HorizontalBubbles } from "../components/Bubble";
+<<<<<<< ref
 import WorkPage from "./work";
 import { PhotoHeader } from "./home";
+<<<<<<< 3442e20374e84d166f54c6985e09ce6583222261
+=======
+<<<<<<< ref
+<<<<<<< 5d2e24a5f0d326aa2cdfa640170c43dcc873ebed
+=======
+<<<<<<< ref
+<<<<<<< 6a8d716ec69108655a73221b499dddec74db3c72
+=======
+<<<<<<< ref
+=======
+import WorkPage from "./work/index";
+import { PhotoHeader } from "./home/PhotoHeader";
+>>>>>>> init refactor
+>>>>>>> init refactor
+>>>>>>> init refactor
+>>>>>>> init refactor
 // import { StyledHomeLink } from "../styledComponents/StyledHomePage";
 <<<<<<< ref
 import { StyledAboutContainer } from "../styledComponents/StyledAboutPage";

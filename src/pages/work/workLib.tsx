@@ -5,6 +5,7 @@ import NPExplorer from "../assets/np-explorer.png";
 import Pacer from "../assets/pacer.png";
 import PropPulse from "../assets/propeller-pulse.png";
 import Techtonic from "../assets/techtonic.png";
+<<<<<<< ref:src/pages/work.tsx
 import { Fragment, useRef } from "react";
 import { SpringBubbles } from "../components/Bubble";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -32,8 +33,16 @@ import { StyledHomeLink } from "../styledComponents/StyledHomePage";
 } from "../components/styledComponents/StyledWorkPage";
 import { StyledHomeLink } from "../components/styledComponents/StyledHomePage";
 >>>>>>> modify file structure
+<<<<<<< 3442e20374e84d166f54c6985e09ce6583222261:src/pages/work.tsx
 >>>>>>> modify file structure
+<<<<<<< bc5b993f5e2f48701ba60e2e6809a137472633bf:src/pages/work.tsx
 >>>>>>> modify file structure
+=======
+=======
+=======
+>>>>>>> init refactor:src/pages/work/workLib.tsx
+>>>>>>> init refactor:src/pages/work/workLib.tsx
+>>>>>>> init refactor:src/pages/work/workLib.tsx
 
 export const workLibrary = [
     {
@@ -80,6 +89,7 @@ export const workLibrary = [
         img: Techtonic,
         description: "Find authors and their books Mark Hurst interviews on his Techtonic radio show",
     },
+<<<<<<< ref:src/pages/work.tsx
 ];
 
 
@@ -278,3 +288,6 @@ const ImgLink = ({ img, link }: ImgLinkProps) => {
 };
 
 export default WorkPage;
+=======
+];
+>>>>>>> init refactor:src/pages/work/workLib.tsx

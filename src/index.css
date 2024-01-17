@@ -338,9 +338,9 @@ input:-webkit-autofill:active{
   /* background-color: var(--color-primary); */
 }
 
-.side-to-side:nth-child(2n) {
+/* .side-to-side:nth-child(2n) { */
   /* animation-name: side-to-side-invert, blur; */
-}
+/* } */
 
 @keyframes side-to-side {
   0%, 100% {transform: translateX(0);}

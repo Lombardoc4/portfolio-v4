@@ -1,52 +1,61 @@
 import { YoutubePlayer } from "./components/YoutubePlayer";
 
 // Digital
-import CestPresent from "./assets/digital/cest-present.jpg"
-import CERN from "./assets/digital/cern.png"
-import Intel from "./assets/digital/intel.png"
-import Aries from "./assets/digital/aries.png"
-import Blink from "./assets/digital/blink.png"
-import YouAreWater from "./assets/digital/you-are-water.png"
-import SpaceWay from "./assets/digital/space-way.png"
-import Melting from "./assets/digital/meltingWorld-v2-small.png"
-import EvenNuclei from "./assets/digital/even-nuclei-2.png"
-import Dalia from "./assets/digital/dalia.jpg"
-import Mirage from "./assets/digital/mirage.jpg"
-import Essence from "./assets/digital/essence.png"
-import Potential from "./assets/digital/potential.png"
+import CestPresent from "./assets/digital/cest-present.jpg";
+import CERN from "./assets/digital/cern.png";
+import Intel from "./assets/digital/intel.png";
+import Aries from "./assets/digital/aries.png";
+import Blink from "./assets/digital/blink.png";
+import YouAreWater from "./assets/digital/you-are-water.png";
+import SpaceWay from "./assets/digital/space-way.png";
+import Melting from "./assets/digital/meltingWorld-v2-small.png";
+import EvenNuclei from "./assets/digital/even-nuclei-2.png";
+import Dalia from "./assets/digital/dalia.jpg";
+import Mirage from "./assets/digital/mirage.jpg";
+import Essence from "./assets/digital/essence.png";
+import Potential from "./assets/digital/potential.png";
 
 // Analog
-import NatureCollage from "./assets/analog/nature-collage.jpg"
-import Orbs from "./assets/analog/orbs.jpg"
-import Monolith from "./assets/analog/the-monolith.jpg"
-import Walker from "./assets/analog/the-walker.jpg"
-import Dealer from "./assets/analog/deal-with-the-dealer.png"
-import Eclipse from "./assets/analog/eclipse.png"
-import JungleBoogie from "./assets/analog/jungle-boogie-2.png"
-import LakePowell from "./assets/analog/lake-powell.png"
-import Longing from "./assets/analog/long-for-green.png"
-import IceCaps from "./assets/analog/under-ice-caps.png"
-import Snow from "./assets/analog/snow.png"
-import SpaceRock from "./assets/analog/space-rock.png"
-import SpringWarmth from "./assets/analog/spring-warmth.png"
-import Cave from "./assets/analog/the-cave.png"
-import Valley from "./assets/analog/valley-o-time.png"
-import VillageSafety from "./assets/analog/village-safety.png"
-
+import NatureCollage from "./assets/analog/nature-collage.jpg";
+import Orbs from "./assets/analog/orbs.jpg";
+import Monolith from "./assets/analog/the-monolith.jpg";
+import Walker from "./assets/analog/the-walker.jpg";
+import Dealer from "./assets/analog/deal-with-the-dealer.png";
+import Eclipse from "./assets/analog/eclipse.png";
+import JungleBoogie from "./assets/analog/jungle-boogie-2.png";
+import LakePowell from "./assets/analog/lake-powell.png";
+import Longing from "./assets/analog/long-for-green.png";
+import IceCaps from "./assets/analog/under-ice-caps.png";
+import Snow from "./assets/analog/snow.png";
+import SpaceRock from "./assets/analog/space-rock.png";
+import SpringWarmth from "./assets/analog/spring-warmth.png";
+import Cave from "./assets/analog/the-cave.png";
+import Valley from "./assets/analog/valley-o-time.png";
+import VillageSafety from "./assets/analog/village-safety.png";
 
 export interface IArtPiece {
     title: string;
     description: string;
-    type: string,
-    year?: string,
-    img?: JSX.Element
-    video?: JSX.Element
+    type: string;
+    year?: string;
+    img?: JSX.Element;
+    video?: JSX.Element;
 }
 
-const IMG = ({src} : {src: string}) => <img src={src} />
-const VIDEO = ({src} : {src: string}) => <video playsInline={true} controls disablePictureInPicture controlsList="nodownload noplaybackrate noremoteplayback" ><source src={src} type="video/mp4"/>Sorry, your browser doesn't support embedded videos.</video>
+export const IMG = ({ src }: { src: string }) => <img src={src} />;
+export const VIDEO = ({ src }: { src: string }) => (
+    <video
+        playsInline={true}
+        controls
+        disablePictureInPicture
+        controlsList='nodownload noplaybackrate noremoteplayback'
+    >
+        <source src={src} type='video/mp4' />
+        Sorry, your browser doesn't support embedded videos.
+    </video>
+);
 
-export const artLibrary: IArtPiece[] = [
+export const ARTLIBRARY: IArtPiece[] = [
     {
         title: "C'est Present",
         year: "2023",

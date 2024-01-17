@@ -37,7 +37,7 @@ export const ContactForm = ({ closeAction }: { closeAction: () => void }) => {
     const [contact, setContact] = useState<ContactInfo>();
     const closeButton = useMemo(
         () => <Button action={closeAction}>{contact ? "Close" : "Cancel"}</Button>,
-        [contact]
+        [contact, closeAction]
     );
 
     const handleConfirmation = (contact: ContactInfo) => {

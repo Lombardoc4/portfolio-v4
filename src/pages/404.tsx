@@ -4,7 +4,7 @@ import { Clock } from "../components/Clock";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const configError = (error: any) => {
+const configError = (error: unknown) => {
     if (isRouteErrorResponse(error)) {
         if (error.status === 404) {
             return <>This page doesn't exist</>;
