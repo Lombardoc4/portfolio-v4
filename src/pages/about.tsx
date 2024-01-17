@@ -2,7 +2,23 @@ import { HorizontalBubbles } from "../components/Bubble";
 import WorkPage from "./work";
 import { PhotoHeader } from "./home";
 // import { StyledHomeLink } from "../styledComponents/StyledHomePage";
+<<<<<<< ref
 import { StyledAboutContainer } from "../styledComponents/StyledAboutPage";
+<<<<<<< 3442e20374e84d166f54c6985e09ce6583222261
+=======
+=======
+>>>>>>> massive update for mobile and desktop styling
+<<<<<<< 5d2e24a5f0d326aa2cdfa640170c43dcc873ebed
+=======
+=======
+import { StyledHomeLink } from "../styledComponents/StyledHomePage";
+import { StyledAboutContainer } from "../styledComponents/StyledAboutPage";
+>>>>>>> final responsive touches with error page attached
+=======
+import { StyledAboutContainer } from "../components/styledComponents/StyledAboutPage";
+>>>>>>> modify file structure
+>>>>>>> modify file structure
+>>>>>>> modify file structure
 
 function AboutPage() {
     return (

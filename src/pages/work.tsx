@@ -17,8 +17,23 @@ import {
     StyledWorkPageContainer,
     WorkSegment,
     WorkSegmentLink,
+<<<<<<< ref
 } from "../styledComponents/StyledWorkPage";
 import { StyledHomeLink } from "../styledComponents/StyledHomePage";
+<<<<<<< bc5b993f5e2f48701ba60e2e6809a137472633bf
+=======
+=======
+>>>>>>> styling and workpage animations
+<<<<<<< 3442e20374e84d166f54c6985e09ce6583222261
+=======
+=======
+>>>>>>> massive update for mobile and desktop styling
+=======
+} from "../components/styledComponents/StyledWorkPage";
+import { StyledHomeLink } from "../components/styledComponents/StyledHomePage";
+>>>>>>> modify file structure
+>>>>>>> modify file structure
+>>>>>>> modify file structure
 
 export const workLibrary = [
     {

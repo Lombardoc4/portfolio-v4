@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { AnalogTitle, ArtTitle, DigitalTitle, VideoTitle } from "../main";
+
 import { IArtPiece, artLibrary } from "../artLibrary";
 <<<<<<< 2a3a6540c1aa106841fbe78f952c3e32d534ce0f
 =======
@@ -16,10 +16,17 @@ import { SpringBubbles } from "../components/Bubble";
 import { Fragment } from "react";
 =======
 import { Fragment, useEffect, useRef, useState } from "react";
-import { StyledArtNav, StyledArtNavLink, StyledArtPiece, StyledArtPieceAsset } from "../styledComponents/StyledArtPage";
+import { StyledArtNav, StyledArtNavLink, StyledArtPiece, StyledArtPieceAsset } from "../components/styledComponents/StyledArtPage";
 import { TransitionTitle } from "../components/TransitionTitle";
 import { motion, useScroll, useTransform } from "framer-motion";
 >>>>>>> massive update for mobile and desktop styling
+
+
+const AnalogTitle = () => <><span className='pixel'>A</span>n<span className='pixel'>a</span>l<span className='pixel'>o</span>g</>
+const ArtTitle = () => <><span className='pixel'>A</span>rt</>
+const DigitalTitle = () => <>D<span className='pixel'>i</span>g<span className='pixel'>i</span>t<span className='pixel'>a</span>l</>
+const VideoTitle = () => <>V<span className='pixel'>i</span>d<span className='pixel'>eo</span></>
+
 
 export const ArtLayout = () => {
     return (

@@ -40,6 +40,30 @@ import {
     StyledHomeLink,
     // StyledHomeNature,
 } from "../styledComponents/StyledHomePage";
+<<<<<<< 5532f426d62f724c3b20896f5b3e3b31b9a8e7ad
+=======
+=======
+import { ArtTitle } from "../main";
+
+>>>>>>> contact form cors
+<<<<<<< 3442e20374e84d166f54c6985e09ce6583222261
+=======
+=======
+    StyledHomeNature,
+<<<<<<< 6a8d716ec69108655a73221b499dddec74db3c72
+=======
+=======
+    // StyledHomeNature,
+<<<<<<< ref
+>>>>>>> resolving ts errors
+>>>>>>> modify file structure
+} from "../styledComponents/StyledHomePage";
+>>>>>>> massive update for mobile and desktop styling
+=======
+} from "../components/styledComponents/StyledHomePage";
+>>>>>>> modify file structure
+>>>>>>> modify file structure
+>>>>>>> modify file structure
 
 function HomePage() {
     return (
