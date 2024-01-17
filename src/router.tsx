@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layout";
 import HomePage from "./pages/home";
-import WorkPage from "./pages/work";
 import ArtPage, { ArtLayout, GalleryPage } from "./pages/art";
 import AboutPage from "./pages/about";
 import { ErrorPage } from "./pages/404";
+import WorkPage from "./pages/work";
 // import { NaturePage } from "./pages/nature";
 
 export const router = createBrowserRouter([

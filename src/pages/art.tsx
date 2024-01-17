@@ -1,37 +1,9 @@
+import { useScroll, useTransform, motion } from "framer-motion";
+import React, { Fragment, useRef, useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-
-<<<<<<< ref
-import { IArtPiece, artLibrary } from "../artLibrary";
-<<<<<<< 2a3a6540c1aa106841fbe78f952c3e32d534ce0f
-=======
-<<<<<<< refactor
-<<<<<<< 94f7ad83ba0f29f9addff2df421c651c3e2060e9
-=======
-<<<<<<< refactor
-<<<<<<< refactor
->>>>>>> massive update for mobile and desktop styling
-=======
-import { SpringBubbles } from "../components/Bubble";
->>>>>>> remove typescript errors
->>>>>>> massive update for mobile and desktop styling
-import { Fragment } from "react";
-=======
-<<<<<<< 3442e20374e84d166f54c6985e09ce6583222261
-=======
-=======
-import { Outlet } from "react-router-dom";
-import { AnalogTitle, ArtTitle, DigitalTitle, VideoTitle } from "../main";
-import { IArtPiece, artLibrary } from "../artLibrary";
->>>>>>> massive update for mobile and desktop styling
-=======
-import { IArtPiece, ARTLIBRARY } from "../artLibrary";
->>>>>>> init refactor
->>>>>>> init refactor
-import { Fragment, useEffect, useRef, useState } from "react";
-import { StyledArtNav, StyledArtNavLink, StyledArtPiece, StyledArtPieceAsset } from "../components/styledComponents/StyledArtPage";
 import { TransitionTitle } from "../components/TransitionTitle";
-import { motion, useScroll, useTransform } from "framer-motion";
->>>>>>> massive update for mobile and desktop styling
+import { ARTLIBRARY, IArtPiece } from "../artLibrary";
+import { StyledArtNav, StyledArtNavLink, StyledArtPiece, StyledArtPieceAsset } from "../components/styledComponents/StyledArtPage";
 
 
 const AnalogTitle = () => <><span className='pixel'>A</span>n<span className='pixel'>a</span>l<span className='pixel'>o</span>g</>
