@@ -4,7 +4,6 @@ import { Clock } from "../components/Clock";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-
 const configError = (error: any) => {
     if (isRouteErrorResponse(error)) {
         if (error.status === 404) {
@@ -25,59 +24,35 @@ const configError = (error: any) => {
     }
 
     return <>Something went wrong</>;
-}
+};
 
 export const ErrorPage = () => {
     const error = useRouteError();
 
     const errorEl = configError(error);
 
-    return (
-        <ErrorLayout>
-            {errorEl}
-        </ErrorLayout>
-    )
+    return <ErrorLayout>{errorEl}</ErrorLayout>;
+};
 
-
-}
-
-const ErrorLayout = ({children}: {children: React.ReactNode}) => {
-
+const ErrorLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <Layout>
             <StyledLayout className='bungee container'>
                 <div className='copy'>
                     <h1 className='my-4'>{children}</h1>
-
-                    {/* <DigitalClock /> */}
                 </div>
 
-                <div
-                    className='clock-container'
-                    // style={{
-                    //     minHeight: "50lvh",
-                    //     maxWidth: "100vw",
-                    //     display: "flex",
-                    //     placeItems: "center",
-                    //     placeContent: "center",
-                    //     opacity: 0.8,
-                    //     overflow: "hidden",
-                    // }}
-                >
+                <div className='clock-container'>
                     <Clock />
                 </div>
 
                 <div className='copy'>
-                    {/* <h1 className='my-2'>{children}</h1> */}
-
                     <DigitalClock />
                 </div>
             </StyledLayout>
         </Layout>
     );
-
-}
-
+};
 
 const StyledLayout = styled.main`
     overflow: hidden;
@@ -94,19 +69,18 @@ const StyledLayout = styled.main`
         place-items: center;
         place-content: center;
     }
-`
+`;
 
 const DigitalClock = () => {
-    const [time, setTime] = useState(new Date().toLocaleTimeString())
-
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
 
     useEffect(() => {
         const timeInterval = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
 
-        return () => {clearInterval(timeInterval)}
-    }, [])
+        return () => {
+            clearInterval(timeInterval);
+        };
+    }, []);
 
-    return (
-        <h2>{time}</h2>
-    )
-}
+    return <h2>{time}</h2>;
+};
