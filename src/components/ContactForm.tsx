@@ -1,30 +1,8 @@
-import { useMemo, useState } from "react";
+import React, { useState, useMemo } from "react";
+import { AlertIcon } from "../icons";
 import { SpringBubbles } from "./Bubble";
 import { Button } from "./Button";
-<<<<<<< 5532f426d62f724c3b20896f5b3e3b31b9a8e7ad
-import { FormError, StyledContactForm } from "../styledComponents/StyledContactForm";
-=======
-<<<<<<< ref
-<<<<<<< 3442e20374e84d166f54c6985e09ce6583222261
-=======
-<<<<<<< ref
-<<<<<<< ref
->>>>>>> modify file structure
-import { FormError, StyledContactForm } from "../styledComponents/StyledContactForm";
-=======
-import { FormError, StyledContactForm } from "./StyledContactForm";
->>>>>>> contact form cors
-<<<<<<< 3442e20374e84d166f54c6985e09ce6583222261
-=======
-=======
-import { FormError, StyledContactForm } from "../styledComponents/StyledContactForm";
->>>>>>> massive update for mobile and desktop styling
-=======
-import { FormError, StyledContactForm } from "./styledComponents/StyledContactForm";
->>>>>>> modify file structure
->>>>>>> modify file structure
->>>>>>> modify file structure
-import { AlertIcon } from "../icons";
+import { StyledContactForm, FormError } from "./styledComponents/StyledContactForm";
 
 
 interface ContactInfo {

@@ -1,5 +1,8 @@
-import { ImgLinkProps, ImgLink } from "../../components/ImageLink";
+import React from "react";
 import { StyledWorkPageContainer, WorkSegment, WorkSegmentLink } from "../../components/styledComponents/StyledWorkPage";
+import { ImgLinkProps, ImgLink } from "../../components/ImageLink";
+
+
 
 interface IWorkSection extends ImgLinkProps {
     title: string;
@@ -8,6 +11,7 @@ interface IWorkSection extends ImgLinkProps {
     // children?: React.ReactNode;
     description?: string;
 }
+
 interface IDetailedWorkSection extends IWorkSection {
     children?: React.ReactNode;
 }
