@@ -1,8 +1,8 @@
 
-import { Fragment, useRef } from "react";
+import { Fragment, useRef, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
 import { TransitionTitle } from "../../components/TransitionTitle";
-import { Clock } from "../../components/Clock";
+import { Clock, DigitalClock } from "../../components/Clock";
 import {
     StyledClockContainer,
     StyledWorkPage,
@@ -18,7 +18,6 @@ import { workLibrary } from "./workLib";
 const AllWorkSections = ({details = false }: {details?: boolean}) => {
     return workLibrary.map((work, i) => (
         <Fragment key={work.title}>
-            {details ? (
                 <DetailedWorkSection {...work} details={details}>
                     {i !== workLibrary.length - 1 && (
                         <div className="work-container">
@@ -26,23 +25,14 @@ const AllWorkSections = ({details = false }: {details?: boolean}) => {
                         </div>
                     )}
                 </DetailedWorkSection>
-            ) : (
-                <>
-                <WorkSection {...work} details={details}/>
-                {/* </WorkSection> */}
-                    {i !== workLibrary.length - 1 && (
-                        <div className="work-container">
-                            <SpringBubbles />
-                        </div>
-                    )}
-                </>
-            )}
+
         </Fragment>
     ));
 }
 
 function WorkPage({ details = false }: { details?: boolean }) {
     const workSection = useRef<HTMLDivElement>(null)
+    const [showClock, setShowClock] = useState(false);
 
     const { scrollYProgress } = useScroll({
         target: workSection,
@@ -53,14 +43,18 @@ function WorkPage({ details = false }: { details?: boolean }) {
 
     return (
         <StyledWorkPage className='container' ref={workSection}>
-            <StyledClockContainer style={{ opacity: clockOpacity }}>
-                <Clock />
+            <StyledClockContainer style={{ opacity: clockOpacity }} onMouseEnter={() => setShowClock(true)} onMouseLeave={() => setShowClock(false)}>
+                <Clock  />
+                {showClock && <DigitalClock/>}
             </StyledClockContainer>
 
             <TransitionTitle title='Work' className="mt-2" />
 
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4rem 2rem', marginBlock: '4rem'}}>
 
-            {details ? (
+            <AllWorkSections details={details} />
+            </div>
+            {/* {details ? (
                 <AllWorkSections details={details} />
             ) : (
                 <>
@@ -70,7 +64,7 @@ function WorkPage({ details = false }: { details?: boolean }) {
                 </StyledWorkPageContainer>
 
                 </>
-            )}
+            )} */}
         </StyledWorkPage>
     );
 }

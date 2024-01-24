@@ -53,7 +53,7 @@ const AboutAccordian = ({ children, style }: { children: React.ReactNode; style:
             style={style}
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
         >
             {children}
         </motion.div>

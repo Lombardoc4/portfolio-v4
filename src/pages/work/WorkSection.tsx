@@ -3,13 +3,12 @@ import { StyledWorkPageContainer, WorkSegment, WorkSegmentLink } from "../../com
 import { ImgLinkProps, ImgLink } from "../../components/ImageLink";
 
 
-
 interface IWorkSection extends ImgLinkProps {
     title: string;
     role: string;
     details: boolean;
     // children?: React.ReactNode;
-    description?: string;
+    description?: React.ReactNode;
 }
 
 interface IDetailedWorkSection extends IWorkSection {
@@ -21,7 +20,7 @@ export const DetailedWorkSection = (props:  IDetailedWorkSection) => (
         <StyledWorkPageContainer>
             <WorkSection {...props}/>
         </StyledWorkPageContainer>
-        {props.children}
+        {/* {props.children} */}
     </div>
 )
 
@@ -29,18 +28,17 @@ export const DetailedWorkSection = (props:  IDetailedWorkSection) => (
 export const WorkSection = ({ img, title, role, link, description, details }: IWorkSection) => {
     return (
             <WorkSegment className='segment'>
-                {details && <ImgLink img={img} link={link} />}
+                <ImgLink img={img} link={link} />
                 <div className='main-copy w-100'>
                     <WorkSegmentLink target='_blank' to={link}>
                         <div>
                             <h2>{title}</h2>
-                            <p className='pixel'>{role}</p>
+                            {/* <p className='pixel'>{role}</p> */}
                         </div>
 
-                        {!details && <p className='symbol'>&#8514;</p>}
                     </WorkSegmentLink>
 
-                    {details && description}
+                    {/* {details && description} */}
                 </div>
             </WorkSegment>
     );

@@ -57,6 +57,7 @@ export const StyledHomeHeaderCopy = styled(motion.div)`
     position: absolute;
     bottom: 2rem;
     left: 2rem;
+
     /* left: 50%; */
     /* transform: translateX(-50%); */
 
@@ -64,16 +65,21 @@ export const StyledHomeHeaderCopy = styled(motion.div)`
         text-shadow: 0.3rem 0 var(--color-secondary), 0 0 0.5rem var(--color-secondary);
     }
 
+
     @media (min-width: 768px) {
-        font-size: 2rem;
         left: 6rem;
         bottom: 6rem;
+    }
+    @media (min-width: 768px) {
+        p {
+            font-size: 1.5rem;
+        }
     }
 `;
 
 export const StyledHomeLink = styled(Link)`
     text-align: right;
-    font-size: 1.5rem;
+    font-size: 2.75rem;
     transform: skewX(-15deg);
 
     display: inline-block;
@@ -100,7 +106,7 @@ export const StyledHomeAbout = styled.div`
     @media (min-width: 768px) {
         p {
             max-width: 700px;
-            font-size: 2.75rem;
+            font-size: 2.0rem;
             padding-block: 4rem;
             font-weight: 700;
         }

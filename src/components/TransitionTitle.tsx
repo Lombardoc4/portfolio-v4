@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import styled from "styled-components";
 
-export const TransitionTitle = ({title, className} : {title: string, className?: string}) => {
+export const TransitionTitle = ({title, className = ''} : {title: string, className?: string}) => {
     const titleArrary = title.split('');
 
     return <h2>
@@ -24,6 +24,7 @@ export const TransitionTitle = ({title, className} : {title: string, className?:
 }
 
 const StyledTitle = styled(motion.span)`
+    position: relative;
     display: inline-block;
     /* margin-top: 2rem; */
     font-size: 4rem;

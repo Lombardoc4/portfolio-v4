@@ -1,7 +1,6 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 import Layout from "../layout";
-import { Clock } from "../components/Clock";
-import { useEffect, useState } from "react";
+import { Clock, DigitalClock } from "../components/Clock";
 import styled from "styled-components";
 
 const configError = (error: unknown) => {
@@ -70,17 +69,3 @@ const StyledLayout = styled.main`
         place-content: center;
     }
 `;
-
-const DigitalClock = () => {
-    const [time, setTime] = useState(new Date().toLocaleTimeString());
-
-    useEffect(() => {
-        const timeInterval = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
-
-        return () => {
-            clearInterval(timeInterval);
-        };
-    }, []);
-
-    return <h2>{time}</h2>;
-};

@@ -12,8 +12,12 @@ export const workLibrary = [
         role: "Frontend",
         link: "http://np-explorer.s3-website-us-east-1.amazonaws.com/",
         img: NPExplorer,
-        description:
-            "A modern take on US National Parks, utlizing the National Parks and National Weather APIs, to help plan for your next trip",
+        description: (
+            <p>
+                A modern take on US National Parks, utlizing the National Parks and National Weather APIs, to help plan
+                for your next trip
+            </p>
+        ),
     },
     {
         title: "Drug Epidemic Memorial",
@@ -51,4 +55,4 @@ export const workLibrary = [
         img: Techtonic,
         description: "Find authors and their books Mark Hurst interviews on his Techtonic radio show",
     },
-]
+];

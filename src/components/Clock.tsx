@@ -1,5 +1,20 @@
 import { motion } from "framer-motion"
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+
+export const DigitalClock = () => {
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+    useEffect(() => {
+        const timeInterval = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
+
+        return () => {
+            clearInterval(timeInterval);
+        };
+    }, []);
+
+    return <h2 style={{WebkitTextStroke: '1px var(--color-secondary)'}}>{time}</h2>;
+};
 
 export const Clock = () => {
     return (

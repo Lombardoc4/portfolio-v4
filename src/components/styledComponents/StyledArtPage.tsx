@@ -55,7 +55,7 @@ export const StyledArtNavLink = styled(NavLink)`
     width: 100%;
 
     &.active {
-        border: 1px solid var(--color-primary);
+        border: 2px solid var(--color-primary);
     }
 
     &:hover {

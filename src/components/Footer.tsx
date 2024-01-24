@@ -11,7 +11,7 @@ export const Footer = () => (
             color: "var(--color-white)",
         }}
     >
-        <HorizontalBubbles count={1} marginClass='my-4' />
+        <HorizontalBubbles count={1} marginClass='my-2' />
         <div
             className='container'
             style={{
@@ -35,10 +35,10 @@ export const Footer = () => (
                 <div>LOM13@PM.ME</div>
 
                 <div className='mt-1'>
-                    <h3 className='pixel'>
+                    <h3>
                         Cris Lombardo @ {new Date().getFullYear()}
                         <br />
-                        Based in Fort Lee, NJ
+                        Based in New Jersey
                     </h3>
                 </div>
             </div>

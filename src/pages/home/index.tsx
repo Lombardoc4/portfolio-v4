@@ -14,9 +14,9 @@ function HomePage() {
 
             <AboutAccordians />
 
-            <HorizontalBubbles count={1} marginClass='mt-4' />
+            {/* <HorizontalBubbles count={1} marginClass='mt-4' /> */}
 
-            <WorkPage />
+            {/* <WorkPage /> */}
 
             {/* <HorizontalBubbles count={1} marginClass='my-4 mt-2' /> */}
 

@@ -86,6 +86,9 @@ const StyledNav = styled.nav`
     align-items: center;
     gap: 0.5rem;
 
+    svg {
+        display: none
+    }
 
     @media (min-width: 768px) {
         max-width: 600px;
@@ -100,6 +103,11 @@ const StyledNav = styled.nav`
         box-shadow: 0 0 2rem -1rem var(--color-primary);
     }
 
+    @media (min-width: 768px) {
+        svg {
+            display: initial;
+        }
+    }
 `;
 
 const StyledLink = styled.div`
@@ -109,7 +117,7 @@ const StyledLink = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0.25rem;
-    padding: 0.5rem 0.25rem;
+    padding: 1rem 0.25rem;
     color: var(--color-primary);
     border-radius: var(--radius-sm);
     background-color: var(--color-secondary-accent);
@@ -117,6 +125,7 @@ const StyledLink = styled.div`
     flex: 1;
     line-height: 1;
     font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
 
     @media (min-width: 768px) {

@@ -43,7 +43,7 @@ export const Bubble = ({ img, title, link, position, size }: IBubble) => {
     );
 };
 
-export const HorizontalBubbles = ({ count, marginClass }: { count: number; marginClass?: string }) => {
+export const HorizontalBubbles = ({ count, marginClass, delay = false }: { count: number; marginClass?: string, delay?: boolean }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [translateX, setTranslateX] = useState(100);
 
@@ -67,12 +67,13 @@ export const HorizontalBubbles = ({ count, marginClass }: { count: number; margi
                             className='side-to-side'
                             style={{ willChange: "transform, filter" }}
                             animate={{
-                                filter: ["blur(0)", "blur(3px)", "blur(0)"],
+                                filter: ["blur(0)", "blur(3px)", "blur(0)", "blur(3px)", "blur(0)"],
                                 x: i % 2 === 0 ? [translateX, 0, translateX] : [0, translateX, 0],
+                                scale: [1, 0.5, 1, 0.5, 1]
                             }}
                             transition={{
                                 duration: 10,
-                                delay: Math.floor(i / 2) * 0.2,
+                                delay: Math.floor(i / 2) * 0.2 + (delay ? 2.5 : 0),
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             }}
