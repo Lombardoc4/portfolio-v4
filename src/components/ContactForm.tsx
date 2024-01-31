@@ -95,19 +95,18 @@ const sendEmail = async (
             body: JSON.stringify(email),
         });
 
-        console.log('email', emailRes)
 
         const result = await emailRes.json();
-        console.log('result', result)
         const user = {
             name: email.name,
-            email: result.envelope.from
+            email: result.accepted[0]
         }
+
 
         emailRes.status === 200 ? cb(user) : errorCb();
 
     } catch (err) {
-        console.log("err", err);
+        // console.log("err", err);
         errorCb();
     }
 };
@@ -156,11 +155,11 @@ const EmailForm = ({ confirm, closeBtn }: { confirm: (contact: ContactInfo) => v
         sendEmail(
             { name, email, message },
             (contact: ContactInfo) => {
-                setTimeout(() => {
+                // setTimeout(() => {
                     confirm(contact);
 
                     setLoading(false);
-                }, 1000);
+                // }, 1000);
             },
             () => {
                 setError((errs) => ({
