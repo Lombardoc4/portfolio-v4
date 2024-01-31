@@ -6,7 +6,7 @@ on:
     branches:
       - main
 env:
-  BUCKET_NAME : "crislombardo.com"
+  BUCKET_NAME : "crislombardo-v4"
   AWS_REGION : "us-east-1"
 
 jobs:
