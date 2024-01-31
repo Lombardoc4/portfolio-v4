@@ -5,7 +5,6 @@ import { HorizontalBubbles } from "../../components/Bubble";
 import { TransitionTitle } from "../../components/TransitionTitle";
 import { StyledHomeLink } from "../../components/styledComponents/StyledHomePage";
 import { ArtNav } from "../art";
-import WorkPage from "../work";
 
 function HomePage() {
     return (

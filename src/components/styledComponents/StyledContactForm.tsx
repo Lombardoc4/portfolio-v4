@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledContactForm = styled.div`
+export const StyledContactForm = styled.form`
     position: relative;
 
     margin-block: 1rem;

@@ -25,21 +25,26 @@ export const DetailedWorkSection = (props:  IDetailedWorkSection) => (
 )
 
 
-export const WorkSection = ({ img, title, role, link, description, details }: IWorkSection) => {
+export const WorkSection = ({ img,
+    title,
+    // role,
+    link,
+    // description,
+    // details
+}: IWorkSection) => {
     return (
-            <WorkSegment className='segment'>
-                <ImgLink img={img} link={link} />
-                <div className='main-copy w-100'>
-                    <WorkSegmentLink target='_blank' to={link}>
-                        <div>
-                            <h2>{title}</h2>
-                            {/* <p className='pixel'>{role}</p> */}
-                        </div>
+        <WorkSegment className='segment'>
+            <ImgLink img={img} link={link} />
+            <div className='main-copy w-100'>
+                <WorkSegmentLink target='_blank' to={link}>
+                    <div>
+                        <h2>{title}</h2>
+                        {/* <p className='pixel'>{role}</p> */}
+                    </div>
+                </WorkSegmentLink>
 
-                    </WorkSegmentLink>
-
-                    {/* {details && description} */}
-                </div>
-            </WorkSegment>
+                {/* {details && description} */}
+            </div>
+        </WorkSegment>
     );
 };

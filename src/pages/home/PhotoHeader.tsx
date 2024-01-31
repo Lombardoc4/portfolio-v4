@@ -25,7 +25,7 @@ export const PhotoHeader = () => {
                         <span className='pixel'>sir</span>Cris
                         <br />Lombardo
                     </h1>
-                    <p>Tasteful websites for people who know the power of going beyond boundariesFRONT-END DEVELOPER SPECIALIZED IN BUILDING &&nbsp;DESIGNING MODERN WEBSITES </p>
+                    <p className="capitalize">SPECIALIZING IN BUILDING SMOOTH websites for people who know value of user experience</p>
                     <StyledHomeLink to='work' className='underline d-inline-block'>view works &rarr;</StyledHomeLink>
 
                 </StyledHomeHeaderCopy>

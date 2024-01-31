@@ -6,11 +6,11 @@ import { Clock, DigitalClock } from "../../components/Clock";
 import {
     StyledClockContainer,
     StyledWorkPage,
-    StyledWorkPageContainer,
+    // StyledWorkPageContainer,
 } from "../../components/styledComponents/StyledWorkPage";
-import { StyledHomeLink } from "../../components/styledComponents/StyledHomePage";
+// import { StyledHomeLink } from "../../components/styledComponents/StyledHomePage";
 import { SpringBubbles } from "../../components/Bubble";
-import { DetailedWorkSection, WorkSection } from "./WorkSection";
+import { DetailedWorkSection } from "./WorkSection";
 import { workLibrary } from "./workLib";
 
 
