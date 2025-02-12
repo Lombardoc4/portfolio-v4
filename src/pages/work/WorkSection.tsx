@@ -27,7 +27,7 @@ export const DetailedWorkSection = (props:  IDetailedWorkSection) => (
 
 export const WorkSection = ({ img,
     title,
-    // role,
+    role,
     link,
     // description,
     // details
@@ -39,7 +39,7 @@ export const WorkSection = ({ img,
                 <WorkSegmentLink target='_blank' to={link}>
                     <div>
                         <h2>{title}</h2>
-                        {/* <p className='pixel'>{role}</p> */}
+                        <p className='pixel'>{role}</p>
                     </div>
                 </WorkSegmentLink>
 

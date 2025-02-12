@@ -50,7 +50,7 @@ function WorkPage({ details = false }: { details?: boolean }) {
 
             <TransitionTitle title='Work' className="mt-2" />
 
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4rem 2rem', marginBlock: '4rem'}}>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem', marginBlock: '4rem'}}>
 
             <AllWorkSections details={details} />
             </div>

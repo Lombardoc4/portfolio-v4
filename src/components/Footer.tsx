@@ -27,7 +27,7 @@ export const Footer = () => (
                 </Link>
                 <Link
                     target='_blank'
-                    to='https://drive.google.com/file/d/1ewXd_Z0H8X59Kh5vYX1bnnJLVukUa4fW/view?usp=sharing'
+                    to='https://docs.google.com/document/d/18tA5G7fhXbypXJ6ucl2IHRjfIxoow9jUUrUh4_B1IAM/view?usp=sharing'
                     className='roboto d-block'
                 >
                     View CV
